@@ -5,7 +5,7 @@
 ## 安装命令
 
 ```shell
-wget -N --no-check-certificate https://raw.githubusercontents.com/Misaka-blog/x-ui/main/install.sh && bash install.sh
+wget -N --no-check-certificate https://raw.githubusercontents.com/taffychan/x-ui/main/install.sh && bash install.sh
 ```
 
 > 如提示 `wget: command not found` 请安装wget后再执行本脚本
