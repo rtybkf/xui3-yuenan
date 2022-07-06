@@ -88,7 +88,7 @@ before_show_menu() {
 }
 
 install() {
-    bash <(curl -Ls https://raw.githubusercontents.com/Misaka-blog/x-ui/master/install.sh)
+    bash <(curl -Ls https://raw.githubusercontents.com/taffychan/x-ui/main/install.sh)
     if [[ $? == 0 ]]; then
         if [[ $# == 0 ]]; then
             start
@@ -543,7 +543,7 @@ show_menu() {
         14) install_bbr ;;
         15) wget -N --no-check-certificate https://raw.githubusercontents.com/taffychan/acme/main/acme.sh && bash acme.sh && before_show_menu ;;
         16) open_ports ;;
-        17) wget -N --no-check-certificate https://raw.githubusercontents.com/Misaka-blog/Misaka-WARP-Script/master/misakawarp.sh && bash misakawarp.sh && before_show_menu ;;
+        17) wget -N --no-check-certificate https://raw.githubusercontents.com/taffychan/warp/main/warp.sh && bash warp.sh && before_show_menu ;;
         *) red "请输入正确的数字 [0-17]" ;;
     esac
 }
