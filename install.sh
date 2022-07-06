@@ -57,23 +57,6 @@ archAffix(){
     esac
 }
 
-check_centos8(){
-    if [[ -n $(cat /etc/os-release | grep "CentOS Linux 8") ]]; then
-        yellow "检测到当前VPS系统为CentOS 8, 是否升级为CentOS Stream 8以确保软件包正常安装?"
-        read -rp "请输入选项 [y/n]: " comfirm
-        if [[ $comfirm =~ "y"|"Y" ]]; then
-            yellow "正在为你升级到CentOS Stream 8, 大概需要10-30分钟的时间"
-            sleep 1
-            sed -i -e "s|releasever|releasever-stream|g" /etc/yum.repos.d/CentOS-*
-            yum clean all && yum makecache
-            dnf swap centos-linux-repos centos-stream-repos distro-sync -y
-        else
-            red "已取消升级过程, 脚本即将退出！"
-            exit 1
-        fi
-    fi
-}
-
 check_status(){
     yellow "正在检查VPS系统及IP配置环境, 请稍等..."
     WgcfIPv4Status=$(curl -s4m8 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2)
@@ -180,12 +163,9 @@ download_xui(){
 info_bar(){
     clear
     echo "#############################################################"
-    echo -e "#                   ${RED}Misaka x-ui 魔改优化版${PLAIN}                  #"
-    echo -e "# ${GREEN}作者${PLAIN}: vaxilu, FranzKafkaYu, Misaka No                     #"
-    echo -e "# ${GREEN}博客${PLAIN}: https://owo.misaka.rest                             #"
-    echo -e "# ${GREEN}论坛${PLAIN}: https://vpsgo.co                                    #"
-    echo -e "# ${GREEN}TG群${PLAIN}: https://t.me/misakablog_group                       #"
-    echo -e "# ${GREEN}TG频道${PLAIN}: https://t.me/misakablog_channel                   #"
+    echo -e "#                         ${RED}x-ui 面板${PLAIN}                        #"
+    echo -e "# ${GREEN}作者${PLAIN}: taffychan                                           #"
+    echo -e "# ${GREEN}GitHub${PLAIN}: https://github.com/taffychan                      #"
     echo "#############################################################"
     echo ""
     echo -e "系统: ${GREEN} ${CMD} ${PLAIN}"
@@ -253,5 +233,4 @@ show_login_info(){
     echo -e "登录密码: ${GREEN}$config_password ${PLAIN}"
 }
 
-check_centos8
 install_xui $1
