@@ -227,7 +227,7 @@ func (s *TelegramService) StartRun() {
 
 		default:
 			// NOTE:here we need string as a new line each one,we should use ``
-			msg.Text = `Misaka x-ui 魔改优化版 Telegram Bot 使用说明
+			msg.Text = `x-ui面版 Telegram Bot 使用说明
 
 /help 获取bot的帮助信息 (此菜单)
 /delete [port] 删除对应端口的节点
@@ -237,9 +237,7 @@ func (s *TelegramService) StartRun() {
 /disable [port] 关闭对应端口的节点
 /clear [port] 清理对应端口的节点流量
 /clearall 清理所有节点流量
-/version [version] 将会升级xray内核到 [version] 版本
-
-GitHub项目: https://github.com/Misaka-blog/x-ui
+/version [version] 升级xray内核到 [version] 版本
 `
 		}
 
