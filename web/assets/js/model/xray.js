@@ -253,7 +253,7 @@ class KcpStreamSettings extends XrayCommonClass {
         readBufferSize = 2,
         writeBufferSize = 2,
         type = 'none',
-        seed = RandomUtil.randomSeq(10),
+        seed = RandomUtil.randomSeq(32),
     ) {
         super();
         this.mtu = mtu;
@@ -1380,7 +1380,7 @@ Inbound.TrojanSettings = class extends Inbound.Settings {
     }
 };
 Inbound.TrojanSettings.Client = class extends XrayCommonClass {
-    constructor(password = RandomUtil.randomSeq(10), flow = FLOW_CONTROL.DIRECT) {
+    constructor(password = RandomUtil.randomSeq(32), flow = FLOW_CONTROL.DIRECT) {
         super();
         this.password = password;
         this.flow = flow;
@@ -1444,7 +1444,7 @@ Inbound.TrojanSettings.Fallback = class extends XrayCommonClass {
 Inbound.ShadowsocksSettings = class extends Inbound.Settings {
     constructor(protocol,
         method = SSMethods.AES_256_GCM,
-        password = btoa(RandomUtil.randomSeq(64)),
+        password = btoa(RandomUtil.randomSeq(32)),
         network = 'tcp,udp'
     ) {
         super(protocol);
@@ -1570,7 +1570,7 @@ Inbound.SocksSettings = class extends Inbound.Settings {
     }
 };
 Inbound.SocksSettings.SocksAccount = class extends XrayCommonClass {
-    constructor(user = RandomUtil.randomSeq(10), pass = RandomUtil.randomSeq(10)) {
+    constructor(user = RandomUtil.randomSeq(32), pass = RandomUtil.randomSeq(32)) {
         super();
         this.user = user;
         this.pass = pass;
@@ -1610,7 +1610,7 @@ Inbound.HttpSettings = class extends Inbound.Settings {
 };
 
 Inbound.HttpSettings.HttpAccount = class extends XrayCommonClass {
-    constructor(user = RandomUtil.randomSeq(10), pass = RandomUtil.randomSeq(10)) {
+    constructor(user = RandomUtil.randomSeq(32), pass = RandomUtil.randomSeq(32)) {
         super();
         this.user = user;
         this.pass = pass;
