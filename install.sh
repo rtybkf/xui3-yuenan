@@ -163,7 +163,7 @@ download_xui(){
 info_bar(){
     clear
     echo "#############################################################"
-    echo -e "#                         ${RED}x-ui 面板${PLAIN}                        #"
+    echo -e "#                         ${RED}x-ui 面板${PLAIN}                         #"
     echo -e "# ${GREEN}作者${PLAIN}: taffychan                                           #"
     echo -e "# ${GREEN}GitHub${PLAIN}: https://github.com/taffychan                      #"
     echo "#############################################################"
