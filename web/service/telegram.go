@@ -230,14 +230,14 @@ func (s *TelegramService) StartRun() {
 			msg.Text = `x-ui面版 Telegram Bot 使用说明
 
 /help 获取bot的帮助信息 (此菜单)
-/delete [port] 删除对应端口的节点
+/delete [PORT] 删除对应端口的节点
 /restart 重启xray内核
 /status 获取当前系统状态
-/enable [port] 开启对应端口的节点
-/disable [port] 关闭对应端口的节点
-/clear [port] 清理对应端口的节点流量
+/enable [PORT] 开启对应端口的节点
+/disable [PORT] 关闭对应端口的节点
+/clear [PORT] 清理对应端口的节点流量
 /clearall 清理所有节点流量
-/version [version] 升级xray内核到 [version] 版本
+/version [VERSION] 升级xray内核到 [VERSION] 版本
 `
 		}
 
