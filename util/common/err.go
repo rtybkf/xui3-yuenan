@@ -22,7 +22,7 @@ func Recover(msg string) interface{} {
 	panicErr := recover()
 	if panicErr != nil {
 		if msg != "" {
-			logger.Error(msg, "panic:", panicErr)
+			logger.Error(msg, "panic: ", panicErr)
 		}
 	}
 	return panicErr
