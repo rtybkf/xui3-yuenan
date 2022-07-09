@@ -11,20 +11,20 @@
             doy: 4 // The week that contains Jan 4th is the first week of the year.
         },
         buttonText: {
-            prev: "Trước",
-            next: "Tiếp",
-            today: "Hôm nay",
-            month: "Tháng",
-            week: "Tuần",
-            day: "Ngày",
-            list: "Lịch biểu"
+            prev: "昨天",
+            next: "明天",
+            today: "今天",
+            month: "月",
+            week: "星期",
+            day: "日",
+            list: "日程"
         },
-        weekLabel: "Tu",
-        allDayText: "Cả ngày",
+        weekLabel: "一周",
+        allDayText: "一整天",
         eventLimitText: function (n) {
-            return "+ thêm " + n;
+            return "+ 更多的 " + n;
         },
-        noEventsMessage: "Không có sự kiện để hiển thị"
+        noEventsMessage: "没有可显示的事件"
     };
 
     return vi;
