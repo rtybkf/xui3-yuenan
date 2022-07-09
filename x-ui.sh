@@ -175,14 +175,14 @@ reset_user() {
         fi
         return 0
     fi
-    read -rp "请设置您的用户名 [默认随机用户名]: " config_account
+    read -rp "请设置登录用户名 [默认随机用户名]: " config_account
     [[ -z $config_account ]] && config_account=$(date +%s%N | md5sum | cut -c 1-8)
-    read -rp "请设置您的密码 [默认随机密码]: " config_password
+    read -rp "请设置登录密码 [默认随机密码]: " config_password
     [[ -z $config_password ]] && config_password=$(date +%s%N | md5sum | cut -c 1-8)
     /usr/local/x-ui/x-ui setting -username ${config_account} -password ${config_password} >/dev/null 2>&1
-    echo -e "面板用户名已重置为: ${GREEN} ${config_account} ${PLAIN}"
-    echo -e "面板密码已重置为: ${GREEN} ${config_password} ${PLAIN}"
-    green "请使用新的用户名、密码登录x-ui面板"
+    echo -e "面板登录用户名已重置为: ${GREEN} ${config_account} ${PLAIN}"
+    echo -e "面板登录密码已重置为: ${GREEN} ${config_password} ${PLAIN}"
+    green "请使用新的登录用户名、密码访问x-ui面板"
     confirm_restart
 }
 
@@ -200,14 +200,14 @@ reset_config() {
 }
 
 set_port() {
-    echo && echo -n -e "输入端口号[1-65535]: " && read port
+    echo && echo -n -e "输入新的端口号[1-65535]: " && read port
     if [[ -z "${port}" ]]; then
         red "已取消设置端口!"
         before_show_menu
     else
         until [[ -z $(ss -ntlp | awk '{print $4}' | grep -w "$port") ]]; do
             if [[ -n $(ss -ntlp | awk '{print $4}' | grep -w "$port") ]]; then
-                yellow "你设置的端口目前已被占用，请重新设置端口"
+                yellow "你设置的访问端口目前已被占用，请重新设置端口"
                 echo -n -e "输入端口号[1-65535]: " && read port
             fi
         done

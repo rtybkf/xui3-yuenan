@@ -78,16 +78,17 @@ check_status(){
 
 config_panel() {
     yellow "出于安全考虑，安装/更新完成后需要强制修改端口与账户密码"
-    read -rp "请设置您的用户名 [默认随机用户名]: " config_account
+    read -rp "请设置登录用户名 [默认随机用户名]: " config_account
     [[ -z $config_account ]] && config_account=$(date +%s%N | md5sum | cut -c 1-8)
-    read -rp "请设置您的密码 [默认随机密码]: " config_password
+    read -rp "请设置登录密码 [默认随机密码]: " config_password
     [[ -z $config_password ]] && config_password=$(date +%s%N | md5sum | cut -c 1-8)
     read -rp "请设置面板访问端口 [默认随机端口]: " config_port
     [[ -z $config_port ]] && config_port=$(shuf -i 1000-65535 -n 1)
     until [[ -z $(ss -ntlp | awk '{print $4}' | grep -w "$config_port") ]]; do
         if [[ -n $(ss -ntlp | awk '{print $4}' | grep -w  "$config_port") ]]; then
-            yellow "你设置的端口目前已被占用，请重新设置端口"
+            yellow "你设置的端口目前已被其他程序占用，请重新设置端口"
             read -rp "请设置面板访问端口 [默认随机端口]: " config_port
+            [[ -z $config_port ]] && config_port=$(shuf -i 1000-65535 -n 1)
         fi
     done
     /usr/local/x-ui/x-ui setting -username ${config_account} -password ${config_password} >/dev/null 2>&1
