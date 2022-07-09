@@ -7,6 +7,27 @@
     ],
     "tag": "api"
   },
+  "dns": {
+    "hosts": {
+      "dns.google": "8.8.8.8",
+      "dns.pub": "119.29.29.29",
+      "dns.alidns.com": "223.5.5.5",
+      "geosite:category-ads-all": "127.0.0.1"
+    },
+    "servers": [
+      {
+        "address": "https://1.1.1.1/dns-query",
+        "domains": ["geosite:geolocation-!cn", "geosite:google@cn"],
+        "expectIPs": ["geoip:!cn"]
+      },
+        "1.1.1.1",
+      {
+        "address": "localhost",
+        "skipFallback": true
+      }
+    ],
+    "queryStrategy": "UseIPv4"
+ },
   "inbounds": [
     {
       "listen": "127.0.0.1",
@@ -20,13 +41,20 @@
   ],
   "outbounds": [
     {
+      "tag": "direct",
       "protocol": "freedom",
-      "settings": {}
+      "settings": {
+        "domainStrategy": "UseIPv4"
+      }
     },
     {
+      "tag": "blocked",
       "protocol": "blackhole",
-      "settings": {},
-      "tag": "blocked"
+      "settings": {
+        "response": {
+          "type": "http"
+        }
+      }
     }
   ],
   "policy": {
@@ -36,27 +64,78 @@
     }
   },
   "routing": {
+    "domainStrategy": "IPIfNonMatch",
     "rules": [
       {
+        "type": "field",
+        "outboundTag": "Direct",
+        "ip": [
+          "223.5.5.5/32",
+          "119.29.29.29/32",
+          "180.76.76.76/32",
+          "114.114.114.114/32",
+          "geoip:cn",
+          "geoip:private"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "Proxy",
+        "ip": [
+          "1.1.1.1/32",
+          "1.0.0.1/32",
+          "8.8.8.8/32",
+          "8.8.4.4/32",
+          "geoip:us",
+          "geoip:ca",
+          "geoip:telegram"
+        ]
+      },
+      {
+        "type": "field",
+        "ip": [
+            "1.1.1.1"
+        ],
+        "outboundTag": "direct"
+      },
+      {
+        "type": "field",
+        "domain": [
+            "geosite:cn",
+            "geosite:category-ads-all",
+            "geosite:win-spy",
+            "geosite:win-extra"
+        ],
+        "outboundTag": "Reject"
+      },
+      {
+        "type": "field",
+        "domain": [
+          "pincong.rocks"
+        ],
+        "outboundTag": "blocked"
+      },
+      {
+        "type": "field",
         "inboundTag": [
           "api"
         ],
-        "outboundTag": "api",
-        "type": "field"
+        "outboundTag": "api"
       },
       {
+        "type": "field",
         "ip": [
-          "geoip:private"
+          "geoip:private",
+          "geoip:cn"
         ],
-        "outboundTag": "blocked",
-        "type": "field"
+        "outboundTag": "blocked"
       },
       {
+        "type": "field",
         "outboundTag": "blocked",
         "protocol": [
           "bittorrent"
-        ],
-        "type": "field"
+        ]
       }
     ]
   },

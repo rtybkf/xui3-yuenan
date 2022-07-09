@@ -60,6 +60,7 @@ func (s *AllSetting) CheckValid() error {
 		}
 	}
 
+
 	if !strings.HasPrefix(s.WebBasePath, "/") {
 		s.WebBasePath = "/" + s.WebBasePath
 	}

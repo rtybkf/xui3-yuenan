@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 {{template "head" .}}
 <style>
     @media (min-width: 769px) {
         .ant-layout-content {
-            margin: 24px 16px;
+	    margin-left: 0px;
+	    margin-right:0px; 
+	    margin-top:0px;
         }
     }
 
@@ -18,38 +20,177 @@
     <a-layout id="content-layout">
         <a-layout-content>
             <a-spin :spinning="spinning" :delay="500" tip="loading">
-                <transition name="list" appear>
-                    <a-tag v-if="false" color="red" style="margin-bottom: 10px">
-                        Please go to the panel settings as soon as possible to modify the username and password, otherwise there may be a risk of leaking account information
-                    </a-tag>
-                </transition>
-                <transition name="list" appear>
-                    <a-card hoverable style="margin-bottom: 20px;">
-                        <a-row>
-                            <a-col :xs="24" :sm="24" :lg="12">
-                                总上传 / 下载：
-                                <a-tag color="green">[[ sizeFormat(total.up) ]] / [[ sizeFormat(total.down) ]]</a-tag>
-                            </a-col>
-                            <a-col :xs="24" :sm="24" :lg="12">
-                                总用量：
-                                <a-tag color="green">[[ sizeFormat(total.up + total.down) ]]</a-tag>
-                            </a-col>
-                            <a-col :xs="24" :sm="24" :lg="12">
-                                入站数量：
-                                <a-tag color="green">[[ dbInbounds.length ]]</a-tag>
-                            </a-col>
-                        </a-row>
-                    </a-card>
-                </transition>
-                <transition name="list" appear>
-                    <a-card hoverable>
-                        <div slot="title">
-                            <a-button type="primary" @click="openAddInbound">添加入站</a-button>
-                            <a-button type="primary" @click="resetAllTraffic">重置流量</a-button>
+
+      <!-- loader Start -->
+      <div id="loading">
+         <div id="loading-center">
+            <div class="loader">
+               <div class="cube">
+                  <div class="sides">
+                     <div class="top"></div>
+                     <div class="right"></div>
+                     <div class="bottom"></div>
+                     <div class="left"></div>
+                     <div class="front"></div>
+                     <div class="back"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- loader END -->
+      <!-- Wrapper Start -->
+      <div class="wrapper">
+         <!-- Sidebar  -->
+         <div class="iq-sidebar">
+            <div class="iq-sidebar-logo d-flex justify-content-between">
+               <a href="{{ .base_path }}xui">
+                <img src="{{ .base_path }}assets/images/logo.png" class="img-fluid" alt="">
+               </a>
+               <div class="iq-menu-bt align-self-center">
+                  <div class="wrapper-menu">
+                     <div class="line-menu half start"></div>
+                     <div class="line-menu"></div>
+                     <div class="line-menu half end"></div>
+                  </div>
+               </div>
+            </div>
+            <div id="sidebar-scrollbar">
+               <nav class="iq-sidebar-menu">
+                  <ul id="iq-sidebar-toggle" class="iq-menu">
+                     <li class="iq-menu-title"><i class="ri-separator"></i><span>X-UI 魔改优化版</span></li>
+                     <li class="active">
+                        <a href="#dashboard" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-home-4-line"></i><span>控制面板</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                        <ul id="dashboard" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                           <li><a href="{{ .base_path }}xui">系统状态</a></li>
+                           <li class="active"><a href="{{ .base_path }}xui/inbounds">入站列表</a></li>
+	  		   <li><a href="{{ .base_path }}xui/setting">面板设置</a></li>
+			   <li><a href="{{ .base_path }}logout">退出登录</a></li>
+                        </ul>
+                     </li>
+                  </ul>
+               </nav>
+               <div class="p-3"></div>
+            </div>
+         </div>
+         <!-- TOP Nav Bar -->
+         <div class="iq-top-navbar">
+            <div class="iq-navbar-custom">
+               <div class="iq-sidebar-logo">
+                  <div class="top-logo">
+                     <a href="{{ .base_path }}xui" class="logo">
+                     <img src="{{ .base_path }}assets/images/logo.png" class="img-fluid" alt="">
+                     <span></span>
+                     </a>
+                  </div>
+               </div>
+               <div class="navbar-breadcrumb">
+                  <h5 class="mb-0">X-UI 魔改优化版</h5>
+                  <nav aria-label="breadcrumb">
+                     <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ .base_path }}xui">控制面板</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">入站列表</li>
+                     </ul>
+                  </nav>
+               </div>
+               <nav class="navbar navbar-expand-lg navbar-light p-0">
+                  <div class="iq-menu-bt align-self-center" style="right: 1%; top: 15px">
+                     <div class="wrapper-menu">
+                        <div class="line-menu half start"></div>
+                        <div class="line-menu"></div>
+                        <div class="line-menu half end"></div>
+                     </div>
+                  </div>
+               </nav>
+            </div>
+         </div>
+         <!-- TOP Nav Bar END -->
+         <!-- Page Content  -->
+         <div id="content-page" class="content-page">
+            <div class="container-fluid">
+               <div class="row">
+		  <div class="col-lg-12">
+		     <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="{{ .base_path }}xui"><i class="ri-home-4-line mr-1 float-left"></i>控制面板</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">入站列表</li>
+                        </ol>
+                     </nav>
+		  </div>
+		  <div class="col-md-6 col-lg-3">
+                     <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden">
+                        <div class="iq-card-body pb-0">
+                           <div class="rounded-circle iq-card-icon iq-bg-primary"><i class="fas fa-clock"></i></div>
+                           <span class="float-right line-height-6">总上传 / 下载：</span>
+                           <div class="clearfix"></div>
+                           <div class="text-center">
+                              <h5 class="mb-0"> ↑ [[ sizeFormat(total.up) ]] | ↓ [[ sizeFormat(total.down) ]] </h5>
+                           </div>
                         </div>
-                        <a-input v-model="searchKey" placeholder="搜索" autofocus style="max-width: 300px"></a-input>
-                        <a-table :columns="columns" :row-key="dbInbound => dbInbound.id"
-                                 :data-source="searchedInbounds.length > 0 ? searchedInbounds:dbInbounds"
+                        </br>
+                     </div>
+                  </div>
+                  <div class="col-md-6 col-lg-3">
+                     <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden">
+                        <div class="iq-card-body pb-0">
+                           <div class="rounded-circle iq-card-icon iq-bg-warning"><i class="ri-bar-chart-grouped-line"></i></div>
+                           <span class="float-right line-height-6">总用量：</span>
+                           <div class="clearfix"></div>
+                           <div class="text-center">
+                              <h5 class="mb-0"> [[ sizeFormat(total.up + total.down) ]] </h5>
+                           </div>
+                        </div>
+                        </br>
+                     </div>
+                  </div>
+                  <div class="col-md-6 col-lg-3">
+                     <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden">
+                        <div class="iq-card-body pb-0">
+                           <div class="rounded-circle iq-card-icon iq-bg-success"><i class="ri-group-line"></i></div>
+                           <span class="float-right line-height-6">入站数量：</span>
+                           <div class="clearfix"></div>
+                           <div class="text-center">
+                              <h5 class="mb-0"> [[ dbInbounds.length ]] </h5>
+                           </div>
+                        </div>
+                        </br>
+                     </div>
+                  </div>
+                  <div class="col-md-6 col-lg-3">
+                     <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden">
+                        <div class="iq-card-body pb-0">
+                           <div class="rounded-circle iq-card-icon iq-bg-danger"><i class="ri-shopping-cart-line"></i></div>
+                           <span class="float-right line-height-6">重置所有流量</span>
+                           <div class="clearfix"></div>
+                           <div class="text-center">
+                              <h5 class="mb-0"> <button type="button" @click="resetallTraffic(dbInbounds)" class="btn btn-danger rounded-pill mb-3">重置流量</button> </h5>
+                           </div>
+                        </div>
+                        </br>
+                     </div>
+                  </div>
+
+                  <div class="col-lg-12">
+                     <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                           <div class="iq-header-title">
+                              <h5 class="card-title">入站列表</h4>
+                           </div>
+                           <div class="iq-card-header-toolbar d-flex align-items-center">
+                              <div class="dropdown">
+                                 <span class="dropdown-toggle text-primary" id="dropdownMenuButton3" data-toggle="dropdown">
+                                     <i class="ri-more-2-fill"></i>
+                                 </span>
+                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                    <a-tag class="dropdown-item" @click="openAddInbound" href="#">添加入站</a-tag>
+				    <a-tag class="dropdown-item" @click="resetallTraffic(dbInbounds)" href="#">重置流量</a-tag>
+                                  </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="mb-4 iq-card-body">
+		   	<a-table :columns="columns" :row-key="dbInbound => dbInbound.id"
+                                 :data-source="dbInbounds"
                                  :loading="spinning" :scroll="{ x: 1500 }"
                                  :pagination="false"
                                  style="margin-top: 20px"
@@ -87,7 +228,7 @@
                                 <a-tag v-else color="green">无限制</a-tag>
                             </template>
                             <template slot="settings" slot-scope="text, dbInbound">
-                                <a-button type="link" @click="showInfo(dbInbound)">查看</a-button>
+                                <a-button type="link" @click="showInfo(dbInbound)">Chi Tiết</a-button>
                             </template>
                             <template slot="stream" slot-scope="text, dbInbound, index">
                                 <template v-if="dbInbound.isVMess || dbInbound.isVLess || dbInbound.isTrojan || dbInbound.isSS">
@@ -112,12 +253,68 @@
                                 <a-tag v-else color="green">无限期</a-tag>
                             </template>
                         </a-table>
-                    </a-card>
-                </transition>
-            </a-spin>
+			</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Wrapper END -->
+      <!-- Footer -->
+      <footer class="bg-white iq-footer">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-lg-6">
+                  <ul class="list-inline mb-0">
+                     <li class="list-inline-item"><a href="https://github.com/taffychan/x-ui">GitHub</a></li>
+                  </ul>
+               </div>
+               <div class="col-lg-6 text-right">
+                  Copyright 2022 <a href="https://github.com/taffychan/x-ui">X-UI</a> All Rights Reserved.
+               </div>
+            </div>
+         </div>
+      </footer>
+
         </a-layout-content>
     </a-layout>
 </a-layout>
+
+      <!-- Footer END -->
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="{{ .base_path }}assets/js/jquery.min.js"></script>
+      <script src="{{ .base_path }}assets/js/popper.min.js"></script>
+      <script src="{{ .base_path }}assets/js/bootstrap.min.js"></script>
+      <!-- Appear JavaScript -->
+      <script src="{{ .base_path }}assets/js/jquery.appear.js"></script>
+      <!-- Countdown JavaScript -->
+      <script src="{{ .base_path }}assets/js/countdown.min.js"></script>
+      <!-- Counterup JavaScript -->
+      <script src="{{ .base_path }}assets/js/waypoints.min.js"></script>
+      <script src="{{ .base_path }}assets/js/jquery.counterup.min.js"></script>
+      <!-- Wow JavaScript -->
+      <script src="{{ .base_path }}assets/js/wow.min.js"></script>
+      <!-- Apexcharts JavaScript -->
+      <script src="{{ .base_path }}assets/js/apexcharts.js"></script>
+      <!-- Slick JavaScript -->
+      <script src="{{ .base_path }}assets/js/slick.min.js"></script>
+      <!-- Select2 JavaScript -->
+      <script src="{{ .base_path }}assets/js/select2.min.js"></script>
+      <!-- Owl Carousel JavaScript -->
+      <script src="{{ .base_path }}assets/js/owl.carousel.min.js"></script>
+      <!-- Magnific Popup JavaScript -->
+      <script src="{{ .base_path }}assets/js/jquery.magnific-popup.min.js"></script>
+      <!-- Smooth Scrollbar JavaScript -->
+      <script src="{{ .base_path }}assets/js/smooth-scrollbar.js"></script>
+      <!-- lottie JavaScript -->
+      <script src="{{ .base_path }}assets/js/lottie.js"></script>
+      <!-- Chart Custom JavaScript -->
+      <script src="{{ .base_path }}assets/js/chart-custom.js"></script>
+      <!-- Custom JavaScript -->
+      <script src="{{ .base_path }}assets/js/custom.js"></script>
+
 {{template "js" .}}
 <script>
 
@@ -181,7 +378,6 @@
             spinning: false,
             inbounds: [],
             dbInbounds: [],
-            searchedInbounds:[],
             searchKey: '',
         },
         methods: {
@@ -267,6 +463,7 @@
                     remark: dbInbound.remark,
                     enable: dbInbound.enable,
                     expiryTime: dbInbound.expiryTime,
+                    contact: dbInbound.contact,
 
                     listen: inbound.listen,
                     port: inbound.port,
@@ -285,6 +482,7 @@
                     remark: dbInbound.remark,
                     enable: dbInbound.enable,
                     expiryTime: dbInbound.expiryTime,
+                    contact: dbInbound.contact,
 
                     listen: inbound.listen,
                     port: inbound.port,
@@ -309,21 +507,13 @@
                     },
                 });
             },
-            resetAllTraffic() {
-                this.$confirm({
-                    title: '重置所有流量',
-                    content: '确定要重置所有节点流量吗?',
-                    okText: '重置',
-                    cancelText: '取消',
-                    onOk: async () => {
-                        for (const dbInbound of this.dbInbounds) {
-                            const inbound = dbInbound.toInbound();
-                            dbInbound.up = 0;
-                            dbInbound.down = 0;
-                            this.updateInbound(inbound, dbInbound);
-                        }
-                    },
-                });
+            resetallTraffic(dbInbounds) {
+                for (const aInbound of dbInbounds) {
+                    const inbound = aInbound.toInbound();
+                    aInbound.down = 0;
+                    aInbound.up = 0;
+                    this.updateInbound(inbound, aInbound);
+                };
             },
             delInbound(dbInbound) {
                 this.$confirm({

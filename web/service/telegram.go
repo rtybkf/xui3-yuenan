@@ -228,7 +228,7 @@ func (s *TelegramService) StartRun() {
 		default:
 			// NOTE:here we need string as a new line each one,we should use ``
 			msg.Text = `x-ui面版 Telegram Bot 使用说明
-
+			
 /help 获取bot的帮助信息 (此菜单)
 /delete [PORT] 删除对应端口的节点
 /restart 重启xray内核
