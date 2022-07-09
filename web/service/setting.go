@@ -28,11 +28,11 @@ var defaultValueMap = map[string]string{
 	"webKeyFile":         "",
 	"secret":             random.Seq(32),
 	"webBasePath":        "/",
-	"timeLocation":       "Asia/Ho_Chi_Minh",
+	"timeLocation":       "Asia/Shanghai",
 	"tgBotEnable":        "false",
 	"tgBotToken":         "",
-	"tgBotChatId":        "-100",
-	"tgRunTime":	      "30 * * * * *",
+	"tgBotChatId":        "",
+	"tgRunTime":	      "",
 }
 
 type SettingService struct {
