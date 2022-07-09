@@ -228,7 +228,7 @@
                                 <a-tag v-else color="green">无限制</a-tag>
                             </template>
                             <template slot="settings" slot-scope="text, dbInbound">
-                                <a-button type="link" @click="showInfo(dbInbound)">Chi Tiết</a-button>
+                                <a-button type="link" @click="showInfo(dbInbound)">查看</a-button>
                             </template>
                             <template slot="stream" slot-scope="text, dbInbound, index">
                                 <template v-if="dbInbound.isVMess || dbInbound.isVLess || dbInbound.isTrojan || dbInbound.isSS">
