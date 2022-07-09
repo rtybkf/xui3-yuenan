@@ -23,7 +23,6 @@ func (a *XUIController) initRouter(g *gin.RouterGroup) {
 
 	g.GET("/", a.index)
 	g.GET("/inbounds", a.inbounds)
-	g.GET("/infome",a.infome)
 	g.GET("/setting", a.setting)
 
 	a.inboundController = NewInboundController(g)
@@ -31,17 +30,13 @@ func (a *XUIController) initRouter(g *gin.RouterGroup) {
 }
 
 func (a *XUIController) index(c *gin.Context) {
-	html(c, "index.html", "Hệ Thống X-UI", nil)
+	html(c, "index.html", "系统状态", nil)
 }
 
 func (a *XUIController) inbounds(c *gin.Context) {
-	html(c, "inbounds.html", "Danh Sách Server", nil)
-}
-
-func (a *XUIController) infome(c *gin.Context) {
-        html(c, "infome.html", "Thông Tin Của Tôi", nil)
+	html(c, "inbounds.html", "入站列表", nil)
 }
 
 func (a *XUIController) setting(c *gin.Context) {
-	html(c, "setting.html", "Cài Đặt", nil)
+	html(c, "setting.html", "设置", nil)
 }
