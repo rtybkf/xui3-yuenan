@@ -33,11 +33,11 @@
                             <form class="mt-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">用户名</label>
-				    <a-input v-model.trim="user.username" id="exampleInputEmail1" class="form-control mb-0" placeholder='admin' @keydown.enter.native="login" autofocus> </a-input>
+				    <a-input v-model.trim="user.username" id="exampleInputEmail1" class="form-control mb-0" placeholder='username' @keydown.enter.native="login" autofocus> </a-input>
 				</div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">密码</label>
-				    <a-input type="password" v-model.trim="user.password" id="exampleInputPassword1" class="form-control mb-0" placeholder='admin' @keydown.enter.native="login"> </a-input>
+				    <a-input type="password" v-model.trim="user.password" id="exampleInputPassword1" class="form-control mb-0" placeholder='password' @keydown.enter.native="login"> </a-input>
                                 </div>
                                 <div class="d-inline-block w-100">
 				     <div class="custom-control d-inline-block mt-2 pt-1">
@@ -46,10 +46,10 @@
 				     <button @click="login" class="btn btn-primary float-right">登录</button>
                                 </div>
                                 <div class="sign-info">
-				     <span class="dark-color d-inline-block line-height-2">本项目还在继续开发中，请耐心等候！</span>
+				     <span class="dark-color d-inline-block line-height-2">本项目还在努力开发中，有问题提Issues！</span>
                                     <ul class="iq-social-media">
-                                        <li><a href="https://facebook.com/"><i class="ri-facebook-box-line"></i></a></li>
-					<li><a href="https://t.me/"><i class="fa-brands fa-telegram"></i></a></li>
+					<li><a href="https://t.me/"><i class="fa-solid fa-house-chimney"></i></a></li>
+                                        <li><a href="https://facebook.com/"><i class="fa-solid fa-user-group"></i></a></li>
                                     </ul>
                                 </div>
                             </form>
