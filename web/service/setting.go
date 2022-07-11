@@ -31,7 +31,7 @@ var defaultValueMap = map[string]string{
 	"timeLocation":       "Asia/Shanghai",
 	"tgBotEnable":        "false",
 	"tgBotToken":         "",
-	"tgBotChatId":        "",
+	"tgBotChatId":        "0",
 	"tgRunTime":	      "",
 }
 
