@@ -58,11 +58,11 @@ function formatSecond(second) {
     if (second < 60) {
         return second.toFixed(0) + ' 秒';
     } else if (second < 3600) {
-        return (second / 60).toFixed(0) + ' 分';
+        return (second / 60).toFixed(0) + ' 分钟';
     } else if (second < 3600 * 24) {
-        return (second / 3600).toFixed(0) + ' 时';
+        return (second / 3600).toFixed(0) + ' 小时';
     } else {
-        return (second / 3600 / 24).toFixed(0) + ' 日';
+        return (second / 3600 / 24).toFixed(0) + ' 天';
     }
 }
 
