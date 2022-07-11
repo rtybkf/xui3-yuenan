@@ -38,5 +38,5 @@ func (a *XUIController) inbounds(c *gin.Context) {
 }
 
 func (a *XUIController) setting(c *gin.Context) {
-	html(c, "setting.html", "设置", nil)
+	html(c, "setting.html", "面板设置", nil)
 }
