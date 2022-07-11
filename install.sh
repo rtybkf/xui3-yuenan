@@ -77,7 +77,7 @@ check_status(){
 }
 
 config_panel() {
-    yellow "出于安全考虑，安装/更新完成后需要强制修改端口与账户密码"
+    yellow "出于安全性考虑，安装/更新完成后需要强制修改端口与账户密码"
     read -rp "请设置登录用户名 [默认随机用户名]: " config_account
     [[ -z $config_account ]] && config_account=$(date +%s%N | md5sum | cut -c 1-8)
     read -rp "请设置登录密码 [默认随机密码]: " config_password
@@ -181,7 +181,14 @@ install_xui() {
         yellow "检测到目前已安装x-ui面板, 确认卸载原x-ui面板?"
         read -rp "请输入选项 [Y/N, 默认N]: " yn
         if [[ $yn =~ "Y"|"y" ]]; then
-            x-ui uninstall
+            systemctl stop x-ui
+            systemctl disable x-ui
+            rm /etc/systemd/system/x-ui.service -f
+            systemctl daemon-reload
+            systemctl reset-failed
+            rm /etc/x-ui/ -rf
+            rm /usr/local/x-ui/ -rf
+            rm /usr/bin/x-ui -f
         else
             red "已取消卸载, 脚本退出!"
             exit 1
