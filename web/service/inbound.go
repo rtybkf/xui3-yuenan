@@ -54,7 +54,7 @@ func (s *InboundService) AddInbound(inbound *model.Inbound) error {
 		return err
 	}
 	if exist {
-		return common.NewError("Port đã được sử dụng: ", inbound.Port)
+		return common.NewError("端口已存在:", inbound.Port)
 	}
 	db := database.GetDB()
 	return db.Save(inbound).Error
@@ -67,7 +67,7 @@ func (s *InboundService) AddInbounds(inbounds []*model.Inbound) error {
 			return err
 		}
 		if exist {
-			return common.NewError("Port đã được sử dụng: ", inbound.Port)
+			return common.NewError("端口已存在:", inbound.Port)
 		}
 	}
 
@@ -120,7 +120,7 @@ func (s *InboundService) UpdateInbound(inbound *model.Inbound) error {
 		return err
 	}
 	if exist {
-		return common.NewError("Port đã được sử dụng: ", inbound.Port)
+		return common.NewError("端口已存在:", inbound.Port)
 	}
 
 	oldInbound, err := s.GetInbound(inbound.Id)
@@ -149,12 +149,12 @@ func (s *InboundService) ClearTrafficByPort(port int) error {
 	db := database.GetDB()
 	Uperr := db.Model(model.Inbound{}).Where("port = ?", port).Update("up", 0).Error
 	if Uperr != nil {
-		fmt.Println("ClearTrafficByPort error:clear up fail")
+		fmt.Println("ClearTrafficByPort error:clear up failed")
 		return Uperr
 	}
 	Downerr := db.Model(model.Inbound{}).Where("port = ?", port).Update("down", 0).Error
 	if Downerr != nil {
-		fmt.Println("ClearTrafficByPort error:clear up fail")
+		fmt.Println("ClearTrafficByPort error:clear down failed")
 		return Downerr
 	}
 	return nil
