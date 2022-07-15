@@ -134,7 +134,7 @@ download_xui(){
     else
         last_version=$1
         url="https://github.com/taffychan/x-ui/releases/download/${last_version}/x-ui-linux-$(archAffix).tar.gz"
-        yellow "开始安装 x-ui v$1"
+        yellow "开始安装 x-ui $1"
         wget -N --no-check-certificate -O /usr/local/x-ui-linux-$(archAffix).tar.gz ${url}
         if [[ $? -ne 0 ]]; then
             red "下载 x-ui v$1 失败，请确保此版本存在"
