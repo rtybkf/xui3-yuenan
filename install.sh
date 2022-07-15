@@ -57,8 +57,21 @@ archAffix(){
     esac
 }
 
+info_bar(){
+    clear
+    echo "#############################################################"
+    echo -e "#                         ${RED}x-ui 面板${PLAIN}                         #"
+    echo -e "# ${GREEN}作者${PLAIN}: taffychan                                           #"
+    echo -e "# ${GREEN}GitHub${PLAIN}: https://github.com/taffychan                      #"
+    echo "#############################################################"
+    echo ""
+    echo -e "操作系统: ${GREEN} ${CMD} ${PLAIN}"
+    echo ""
+    sleep 2
+}
+
 check_status(){
-    yellow "正在检查VPS系统及IP配置环境, 请稍等..."
+    yellow "正在检查VPS的IP配置环境, 请稍等..." && sleep 1
     WgcfIPv4Status=$(curl -s4m8 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2)
     WgcfIPv6Status=$(curl -s6m8 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2)
     if [[ $WgcfIPv4Status =~ "on"|"plus" ]] || [[ $WgcfIPv6Status =~ "on"|"plus" ]]; then
@@ -74,25 +87,7 @@ check_status(){
             echo -e "nameserver 2a01:4f8:c2c:123f::1" > /etc/resolv.conf
         fi
     fi
-}
-
-config_panel() {
-    yellow "出于安全性考虑，安装/更新完成后需要强制修改端口与账户密码"
-    read -rp "请设置登录用户名 [默认随机用户名]: " config_account
-    [[ -z $config_account ]] && config_account=$(date +%s%N | md5sum | cut -c 1-8)
-    read -rp "请设置登录密码 [默认随机密码]: " config_password
-    [[ -z $config_password ]] && config_password=$(date +%s%N | md5sum | cut -c 1-8)
-    read -rp "请设置面板访问端口 [默认随机端口]: " config_port
-    [[ -z $config_port ]] && config_port=$(shuf -i 1000-65535 -n 1)
-    until [[ -z $(ss -ntlp | awk '{print $4}' | grep -w "$config_port") ]]; do
-        if [[ -n $(ss -ntlp | awk '{print $4}' | grep -w  "$config_port") ]]; then
-            yellow "你设置的端口目前已被其他程序占用，请重新设置端口"
-            read -rp "请设置面板访问端口 [默认随机端口]: " config_port
-            [[ -z $config_port ]] && config_port=$(shuf -i 1000-65535 -n 1)
-        fi
-    done
-    /usr/local/x-ui/x-ui setting -username ${config_account} -password ${config_password} >/dev/null 2>&1
-    /usr/local/x-ui/x-ui setting -port ${config_port} >/dev/null 2>&1
+    sleep 1
 }
 
 install_base(){
@@ -161,17 +156,23 @@ download_xui(){
     chmod +x /usr/bin/x-ui
 }
 
-info_bar(){
-    clear
-    echo "#############################################################"
-    echo -e "#                         ${RED}x-ui 面板${PLAIN}                         #"
-    echo -e "# ${GREEN}作者${PLAIN}: taffychan                                           #"
-    echo -e "# ${GREEN}GitHub${PLAIN}: https://github.com/taffychan                      #"
-    echo "#############################################################"
-    echo ""
-    echo -e "系统: ${GREEN} ${CMD} ${PLAIN}"
-    echo ""
-    sleep 2
+panel_config() {
+    yellow "出于安全性考虑，安装/更新完成后需要强制修改端口与账户密码"
+    read -rp "请设置登录用户名 [默认随机用户名]: " config_account
+    [[ -z $config_account ]] && config_account=$(date +%s%N | md5sum | cut -c 1-8)
+    read -rp "请设置登录密码 [默认随机密码]: " config_password
+    [[ -z $config_password ]] && config_password=$(date +%s%N | md5sum | cut -c 1-8)
+    read -rp "请设置面板访问端口 [默认随机端口]: " config_port
+    [[ -z $config_port ]] && config_port=$(shuf -i 1000-65535 -n 1)
+    until [[ -z $(ss -ntlp | awk '{print $4}' | grep -w "$config_port") ]]; do
+        if [[ -n $(ss -ntlp | awk '{print $4}' | grep -w  "$config_port") ]]; then
+            yellow "你设置的端口目前已被其他程序占用，请重新设置端口"
+            read -rp "请设置面板访问端口 [默认随机端口]: " config_port
+            [[ -z $config_port ]] && config_port=$(shuf -i 1000-65535 -n 1)
+        fi
+    done
+    /usr/local/x-ui/x-ui setting -username ${config_account} -password ${config_password} >/dev/null 2>&1
+    /usr/local/x-ui/x-ui setting -port ${config_port} >/dev/null 2>&1
 }
 
 install_xui() {
@@ -199,7 +200,7 @@ install_xui() {
     
     install_base
     download_xui $1
-    config_panel
+    panel_config
     
     systemctl daemon-reload
     systemctl enable x-ui >/dev/null 2>&1
@@ -237,8 +238,8 @@ show_login_info(){
         echo -e "面板IPv4登录地址为: ${GREEN}http://$v4:$config_port ${PLAIN}"
         echo -e "面板IPv6登录地址为: ${GREEN}http://[$v6]:$config_port ${PLAIN}"
     fi
-    echo -e "登录用户名: ${GREEN}$config_account ${PLAIN}"
-    echo -e "登录密码: ${GREEN}$config_password ${PLAIN}"
+    echo -e "用户名: ${GREEN}$config_account ${PLAIN}"
+    echo -e "密码: ${GREEN}$config_password ${PLAIN}"
 }
 
 install_xui $1
