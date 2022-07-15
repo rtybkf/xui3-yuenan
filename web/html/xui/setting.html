@@ -185,9 +185,9 @@
                                     <div class="tab-pane fade" id="v-pills-telegram" role="tabpanel" aria-labelledby="v-pills-telegram-tab">
 				       <a-list item-layout="horizontal" style="background: white">
 				          <setting-list-item type="switch" title="启用Telegram Bot" desc="重启面板生效"  v-model="allSetting.tgBotEnable"></setting-list-item>
-                                <setting-list-item type="text" title="Telegram Bot TOKEN" desc="重启面板生效"  v-model="allSetting.tgBotToken"></setting-list-item>
-                                <setting-list-item type="number" title="Telegram Bot Chat ID" desc="重启面板生效"  v-model.number="allSetting.tgBotChatId"></setting-list-item>
-                                <setting-list-item type="text" title="Telegram Bot 通知时间" desc="采用Crontab定时格式，重启面板生效"  v-model="allSetting.tgRunTime"></setting-list-item>
+                                <setting-list-item type="text" title="Telegram Bot TOKEN" desc="从 @botfather 获取TOKEN"  v-model="allSetting.tgBotToken"></setting-list-item>
+                                <setting-list-item type="number" title="Telegram Bot User ID" desc="从 @userinfobot 获取User ID"  v-model.number="allSetting.tgBotChatId"></setting-list-item>
+                                <setting-list-item type="text" title="Telegram Bot 通知时间" desc="使用Crontab定时格式，格式生成器：https://cron.qqe2.com/"  v-model="allSetting.tgRunTime"></setting-list-item>
                                        </a-list>
                                     </div>
                                  </div>
