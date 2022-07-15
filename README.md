@@ -18,6 +18,7 @@ wget -N --no-check-certificate https://raw.githubusercontents.com/taffychan/x-ui
 * Fedora 29+
 * Ubuntu 16+
 * Debian 9+
+* Alpine （未测试）
 
 ## 功能介绍
 
