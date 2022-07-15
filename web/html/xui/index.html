@@ -282,7 +282,7 @@
       </div>
       <a-modal id="version-modal" v-model="versionModal.visible" title="切换版本" :closable="true" @ok="() => versionModal.visible = false" ok-text="确定" cancel-text="取消">
         <h4>点击你想切换的版本</h4>
-        <h5>请谨慎选择，旧版本可能配置不兼容</h5>
+        <h5>请谨慎选择，旧版本可能会导致节点配置不兼容</h5>
         <template v-for="version, index in versionModal.versions">
           <a-tag :color="index % 2 == 0 ? 'blue' : 'green'" style="margin: 10px" @click="switchV2rayVersion(version)">
              [[ version ]]
@@ -297,11 +297,11 @@
             <div class="row">
                <div class="col-lg-6">
                   <ul class="list-inline mb-0">
-                     <li class="list-inline-item"><a href="https://github.com/taffychan/x-ui">GitHub</a></li>
+                     <li class="list-inline-item"><a href="https://github.com/blog-misaka/x-ui">GitHub</a></li>
                   </ul>
                </div>
                <div class="col-lg-6 text-right">
-                  Copyright 2022 <a href="https://github.com/taffychan/x-ui">X-UI</a> All Rights Reserved.
+                  Copyright 2022 <a href="https://github.com/blog-misaka/x-ui">X-UI</a> All Rights Reserved.
                </div>
             </div>
          </div>
