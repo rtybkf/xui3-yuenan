@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
- <head></head>
- <body>
-   {{template &quot;head&quot; .}} 
-  <style>
+{{template "head" .}}
+<style>
     @media (min-width: 769px) {
         .ant-layout-content {
 	    margin-left: 0px;
@@ -27,227 +25,241 @@
     .ant-tabs-top-bar {
         background: white;
     }
-</style>  
-  <a-layout id="app" v-cloak="">
-    {{ template &quot;commonSider&quot; . }} 
-   <a-layout id="content-layout"> 
-    <a-layout-content> 
-     <a-spin :spinning="spinning" :delay="500" tip="loading"> 
-      <!-- loader Start --> 
-      <div id="loading"> 
-       <div id="loading-center"> 
-        <div class="loader"> 
-         <div class="cube"> 
-          <div class="sides"> 
-           <div class="top"></div> 
-           <div class="right"></div> 
-           <div class="bottom"></div> 
-           <div class="left"></div> 
-           <div class="front"></div> 
-           <div class="back"></div> 
-          </div> 
-         </div> 
-        </div> 
-       </div> 
-      </div> 
-      <!-- loader END --> 
-      <!-- Wrapper Start --> 
-      <div class="wrapper"> 
-       <!-- Sidebar  --> 
-       <div class="iq-sidebar"> 
-        <div class="iq-sidebar-logo d-flex justify-content-between"> 
-         <a href="{{ .base_path }}xui"> <img src="{{ .base_path }}assets/images/logo.png" class="img-fluid" alt="" /> </a> 
-         <div class="iq-menu-bt align-self-center"> 
-          <div class="wrapper-menu"> 
-           <div class="line-menu half start"></div> 
-           <div class="line-menu"></div> 
-           <div class="line-menu half end"></div> 
-          </div> 
-         </div> 
-        </div> 
-        <div id="sidebar-scrollbar"> 
-         <nav class="iq-sidebar-menu"> 
-          <ul id="iq-sidebar-toggle" class="iq-menu"> 
-           <li class="iq-menu-title"><i class="ri-separator"></i><span>X-UI 魔改优化版</span></li> 
-           <li class="active"> <a href="#dashboard" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="ri-home-4-line"></i><span>控制面板</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a> 
-            <ul id="dashboard" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle"> 
-             <li><a href="{{ .base_path }}xui">系统状态</a></li> 
-             <li><a href="{{ .base_path }}xui/inbounds">入站列表</a></li> 
-             <li class="active"><a href="{{ .base_path }}xui/setting">面板设置</a></li> 
-             <li><a href="{{ .base_path }}logout">退出登录</a></li> 
-            </ul> </li> 
-          </ul> 
-         </nav> 
-         <div class="p-3"></div> 
-        </div> 
-       </div> 
-       <!-- TOP Nav Bar --> 
-       <div class="iq-top-navbar"> 
-        <div class="iq-navbar-custom"> 
-         <div class="iq-sidebar-logo"> 
-          <div class="top-logo"> 
-           <a href="{{ .base_path }}xui" class="logo"> <img src="{{ .base_path }}assets/images/logo.png" class="img-fluid" alt="" /> <span></span> </a> 
-          </div> 
-         </div> 
-         <div class="navbar-breadcrumb"> 
-          <h5 class="mb-0">X-UI 魔改优化版</h5> 
-          <nav aria-label="breadcrumb"> 
-           <ul class="breadcrumb"> 
-            <li class="breadcrumb-item"><a href="{{ .base_path }}xui">控制面板</a></li> 
-            <li class="breadcrumb-item active" aria-current="page">面板设置</li> 
-           </ul> 
-          </nav> 
-         </div> 
-         <nav class="navbar navbar-expand-lg navbar-light p-0"> 
-          <div class="iq-menu-bt align-self-center" style="right: 1%; top: 15px"> 
-           <div class="wrapper-menu"> 
-            <div class="line-menu half start"></div> 
-            <div class="line-menu"></div> 
-            <div class="line-menu half end"></div> 
-           </div> 
-          </div> 
-         </nav> 
-        </div> 
-       </div> 
-       <!-- TOP Nav Bar END --> 
-       <div id="content-page" class="content-page"> 
-        <div class="container-fluid"> 
-         <nav aria-label="breadcrumb"> 
-          <ol class="breadcrumb"> 
-           <li class="breadcrumb-item"><a href="{{ .base_path }}xui"><i class="ri-home-4-line mr-1 float-left"></i>控制面板</a></li> 
-           <li class="breadcrumb-item active" aria-current="page">面板设置</li> 
-          </ol> 
-         </nav> 
-         <div class="iq-card"> 
-          <div class="iq-card-header d-flex justify-content-between"> 
-           <div class="iq-header-title"> 
-            <h4 class="card-title">面板设置</h4> 
-           </div> 
-          </div> 
-          <div class="iq-card-body"> 
-           <p>在这里可以自定义x-ui面板的各项设置</p> 
-           <div class="row"> 
-            <div class="col-sm-3"> 
-             <div class="nav flex-column nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical"> 
-              <a class="nav-link active" id="v-pills-dashboard-tab" data-toggle="pill" href="#v-pills-dashboard" role="tab" aria-controls="v-pills-dashboard" aria-selected="true">面板配置</a> 
-              <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">用户设置</a> 
-              <a class="nav-link" id="v-pills-xray-tab" data-toggle="pill" href="#v-pills-xray" role="tab" aria-controls="v-pills-xray" aria-selected="false">xray 相关设置</a> 
-              <a class="nav-link" id="v-pills-telegram-tab" data-toggle="pill" href="#v-pills-telegram" role="tab" aria-controls="v-pills-telegram" aria-selected="false">TG提醒相关设置</a> 
-             </div> 
-            </div> 
-            <div class="col-sm-9"> 
-             <div class="tab-content mt-0" id="v-pills-tabContent"> 
-              <div class="tab-pane fade show active" id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab"> 
-               <a-list item-layout="horizontal" style="background: white"> 
-                <setting-list-item type="text" title="面板监听 IP" desc="默认留空监听所有 IP，重启面板生效" v-model="allSetting.webListen"></setting-list-item> 
-                <setting-list-item type="number" title="面板监听端口" desc="重启面板生效" v-model.number="allSetting.webPort"></setting-list-item> 
-                <setting-list-item type="text" title="面板证书公钥文件路径" desc="填写一个 '/' 开头的绝对路径，重启面板生效" v-model="allSetting.webCertFile"></setting-list-item> 
-                <setting-list-item type="text" title="面板证书密钥文件路径" desc="填写一个 '/' 开头的绝对路径，重启面板生效" v-model="allSetting.webKeyFile"></setting-list-item> 
-                <setting-list-item type="text" title="面板 url 根路径" desc="必须以 '/' 开头，以 '/' 结尾，重启面板生效" v-model="allSetting.webBasePath"></setting-list-item> 
-                <setting-list-item type="text" title="时区" desc="定时任务按照该时区的时间运行，重启面板生效" v-model="allSetting.timeLocation"></setting-list-item> 
-               </a-list> 
-              </div> 
-              <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"> 
-               <a-list item-layout="horizontal" style="background: white"> 
-                <a-form style="background: white; padding: 20px"> 
-                 <a-form-item label="原用户名"> 
-                  <a-input v-model="user.oldUsername" style="max-width: 300px"></a-input> 
-                 </a-form-item> 
-                 <a-form-item label="原密码"> 
-                  <a-input type="password" v-model="user.oldPassword" style="max-width: 300px"></a-input> 
-                 </a-form-item> 
-                 <a-form-item label="新用户名"> 
-                  <a-input v-model="user.newUsername" style="max-width: 300px"></a-input> 
-                 </a-form-item> 
-                 <a-form-item label="新密码"> 
-                  <a-input type="password" v-model="user.newPassword" style="max-width: 300px"></a-input> 
-                 </a-form-item> 
-                 <a-form-item> 
-                  <a-button type="primary" @click="updateUser">
-                   修改
-                  </a-button> 
-                 </a-form-item> 
-                </a-form> 
-               </a-list> 
-              </div> 
-              <div class="tab-pane fade" id="v-pills-xray" role="tabpanel" aria-labelledby="v-pills-xray-tab"> 
-               <a-list item-layout="horizontal" style="background: white"> 
-                <setting-list-item type="textarea" title="xray 配置模版" desc="以此模版为基础生成最终的 xray 配置文件，重启面板生效" v-model="allSetting.xrayTemplateConfig"></setting-list-item> 
-               </a-list> 
-              </div> 
-              <div class="tab-pane fade" id="v-pills-telegram" role="tabpanel" aria-labelledby="v-pills-telegram-tab"> 
-               <a-list item-layout="horizontal" style="background: white"> 
-                <setting-list-item type="switch" title="启用Telegram Bot" desc="重启面板生效" v-model="allSetting.tgBotEnable"></setting-list-item> 
-                <setting-list-item type="text" title="Telegram Bot TOKEN" desc="从 @botfather 获取TOKEN" v-model="allSetting.tgBotToken"></setting-list-item> 
-                <setting-list-item type="number" title="Telegram Bot User ID" desc="从 @userinfobot 获取User ID" v-model.number="allSetting.tgBotChatId"></setting-list-item> 
-                <setting-list-item type="text" title="Telegram Bot 通知时间" desc="使用Crontab定时格式，格式生成器：https://cron.qqe2.com/" v-model="allSetting.tgRunTime"></setting-list-item> 
-               </a-list> 
-              </div> 
-             </div> 
-            </div> 
-            <button @click="updateAllSetting" class="btn btn-primary mb-3">保存设置</button> 
-            <button @click="restartPanel" class="btn btn-success mb-3">重启面板</button> 
-           </div> 
-          </div> 
-         </div> 
-        </div> 
-       </div> 
-      </div> 
-      <!-- Wrapper END --> 
-      <!-- Footer --> 
-      <footer class="bg-white iq-footer"> 
-       <div class="container-fluid"> 
-        <div class="row"> 
-         <div class="col-lg-6"> 
-          <ul class="list-inline mb-0"> 
-           <li class="list-inline-item"><a href="https://github.com/taffychan/x-ui">GitHub</a></li> 
-          </ul> 
-         </div> 
-         <div class="col-lg-6 text-right">
-           Copyright 2022 
-          <a href="https://github.com/taffychan/x-ui">X-UI</a> All Rights Reserved. 
-         </div> 
-        </div> 
-       </div>  
-      </footer> 
-     </a-spin>
-    </a-layout-content> 
-   </a-layout> 
-  </a-layout> 
-  <!-- Footer END --> 
-  <!-- Optional JavaScript --> 
-  <!-- jQuery first, then Popper.js, then Bootstrap JS --> 
-  <script src="{{ .base_path }}assets/js/jquery.min.js"></script> 
-  <script src="{{ .base_path }}assets/js/popper.min.js"></script> 
-  <script src="{{ .base_path }}assets/js/bootstrap.min.js"></script> 
-  <!-- Appear JavaScript --> 
-  <script src="{{ .base_path }}assets/js/jquery.appear.js"></script> 
-  <!-- Countdown JavaScript --> 
-  <script src="{{ .base_path }}assets/js/countdown.min.js"></script> 
-  <!-- Counterup JavaScript --> 
-  <script src="{{ .base_path }}assets/js/waypoints.min.js"></script> 
-  <script src="{{ .base_path }}assets/js/jquery.counterup.min.js"></script> 
-  <!-- Wow JavaScript --> 
-  <script src="{{ .base_path }}assets/js/wow.min.js"></script> 
-  <!-- Apexcharts JavaScript --> 
-  <script src="{{ .base_path }}assets/js/apexcharts.js"></script> 
-  <!-- Slick JavaScript --> 
-  <script src="{{ .base_path }}assets/js/slick.min.js"></script> 
-  <!-- Select2 JavaScript --> 
-  <script src="{{ .base_path }}assets/js/select2.min.js"></script> 
-  <!-- Owl Carousel JavaScript --> 
-  <script src="{{ .base_path }}assets/js/owl.carousel.min.js"></script> 
-  <!-- Magnific Popup JavaScript --> 
-  <script src="{{ .base_path }}assets/js/jquery.magnific-popup.min.js"></script> 
-  <!-- Smooth Scrollbar JavaScript --> 
-  <script src="{{ .base_path }}assets/js/smooth-scrollbar.js"></script> 
-  <!-- lottie JavaScript --> 
-  <script src="{{ .base_path }}assets/js/lottie.js"></script> 
-  <!-- Chart Custom JavaScript --> 
-  <script src="{{ .base_path }}assets/js/chart-custom.js"></script> 
-  <!-- Custom JavaScript --> 
-  <script src="{{ .base_path }}assets/js/custom.js"></script> {{template &quot;js&quot; .}} {{template &quot;component/setting&quot;}} 
-  <script>
+</style>
+<body>
+<a-layout id="app" v-cloak>
+    {{ template "commonSider" . }}
+    <a-layout id="content-layout">
+        <a-layout-content>
+            <a-spin :spinning="spinning" :delay="500" tip="loading">
+
+      <!-- loader Start -->
+      <div id="loading">
+         <div id="loading-center">
+            <div class="loader">
+               <div class="cube">
+                  <div class="sides">
+                     <div class="top"></div>
+                     <div class="right"></div>
+                     <div class="bottom"></div>
+                     <div class="left"></div>
+                     <div class="front"></div>
+                     <div class="back"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- loader END -->
+      <!-- Wrapper Start -->
+      <div class="wrapper">
+         <!-- Sidebar  -->
+         <div class="iq-sidebar">
+            <div class="iq-sidebar-logo d-flex justify-content-between">
+               <a href="{{ .base_path }}xui">
+                <img src="{{ .base_path }}assets/images/logo.png" class="img-fluid" alt="">
+               </a>
+               <div class="iq-menu-bt align-self-center">
+                  <div class="wrapper-menu">
+                     <div class="line-menu half start"></div>
+                     <div class="line-menu"></div>
+                     <div class="line-menu half end"></div>
+                  </div>
+               </div>
+            </div>
+            <div id="sidebar-scrollbar">
+               <nav class="iq-sidebar-menu">
+                  <ul id="iq-sidebar-toggle" class="iq-menu">
+                     <li class="iq-menu-title"><i class="ri-separator"></i><span>X-UI 魔改优化版</span></li>
+                     <li class="active">
+                        <a href="#dashboard" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-home-4-line"></i><span>控制面板</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                        <ul id="dashboard" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                           <li><a href="{{ .base_path }}xui">系统状态</a></li>
+                           <li><a href="{{ .base_path }}xui/inbounds">入站列表</a></li>
+	  		   <li class="active"><a href="{{ .base_path }}xui/setting">面板设置</a></li>
+			   <li><a href="{{ .base_path }}logout">退出登录</a></li>
+                        </ul>
+                     </li>
+                  </ul>
+               </nav>
+               <div class="p-3"></div>
+            </div>
+         </div>
+         <!-- TOP Nav Bar -->
+         <div class="iq-top-navbar">
+            <div class="iq-navbar-custom">
+               <div class="iq-sidebar-logo">
+                  <div class="top-logo">
+                     <a href="{{ .base_path }}xui" class="logo">
+                     <img src="{{ .base_path }}assets/images/logo.png" class="img-fluid" alt="">
+                     <span></span>
+                     </a>
+                  </div>
+               </div>
+               <div class="navbar-breadcrumb">
+                  <h5 class="mb-0">X-UI 魔改优化版</h5>
+                  <nav aria-label="breadcrumb">
+                     <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ .base_path }}xui">控制面板</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">面板设置</li>
+                     </ul>
+                  </nav>
+               </div>
+               <nav class="navbar navbar-expand-lg navbar-light p-0">
+                  <div class="iq-menu-bt align-self-center" style="right: 1%; top: 15px">
+                     <div class="wrapper-menu">
+                        <div class="line-menu half start"></div>
+                        <div class="line-menu"></div>
+                        <div class="line-menu half end"></div>
+                     </div>
+                  </div>
+               </nav>
+            </div>
+         </div>
+         <!-- TOP Nav Bar END -->
+         <div id="content-page" class="content-page">
+            <div class="container-fluid">
+		<nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="{{ .base_path }}xui"><i class="ri-home-4-line mr-1 float-left"></i>控制面板</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">面板设置</li>
+                        </ol>
+                     </nav>
+		     <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                           <div class="iq-header-title">
+                              <h4 class="card-title">面板设置</h4>
+                           </div>
+                        </div>
+                        <div class="iq-card-body">
+                           <p>在这里可以自定义x-ui面板的各项设置</p>
+                           <div class="row">
+                              <div class="col-sm-3">
+                                 <div class="nav flex-column nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                    <a class="nav-link active" id="v-pills-dashboard-tab" data-toggle="pill" href="#v-pills-dashboard" role="tab" aria-controls="v-pills-dashboard" aria-selected="true">面板配置</a>
+                                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">用户设置</a>
+                                    <a class="nav-link" id="v-pills-xray-tab" data-toggle="pill" href="#v-pills-xray" role="tab" aria-controls="v-pills-xray" aria-selected="false">xray 相关设置</a>
+                                    <a class="nav-link" id="v-pills-telegram-tab" data-toggle="pill" href="#v-pills-telegram" role="tab" aria-controls="v-pills-telegram" aria-selected="false">TG提醒相关设置</a>
+                                 </div>
+                              </div>
+                              <div class="col-sm-9">
+                                 <div class="tab-content mt-0" id="v-pills-tabContent">
+                                    <div class="tab-pane fade show active" id="v-pills-dashboard" role="tabpanel" aria-labelledby="v-pills-dashboard-tab">
+				       <a-list item-layout="horizontal" style="background: white">
+                                         <setting-list-item type="text" title="面板监听 IP" desc="默认留空监听所有 IP，重启面板生效" v-model="allSetting.webListen"></setting-list-item>
+					 <setting-list-item type="number" title="面板监听端口" desc="重启面板生效" v-model.number="allSetting.webPort"></setting-list-item>
+					 <setting-list-item type="text" title="面板证书公钥文件路径" desc="填写一个 '/' 开头的绝对路径，重启面板生效" v-model="allSetting.webCertFile"></setting-list-item>
+					 <setting-list-item type="text" title="面板证书密钥文件路径" desc="填写一个 '/' 开头的绝对路径，重启面板生效" v-model="allSetting.webKeyFile"></setting-list-item>
+					 <setting-list-item type="text" title="面板 url 根路径" desc="必须以 '/' 开头，以 '/' 结尾，重启面板生效" v-model="allSetting.webBasePath"></setting-list-item>
+					 <setting-list-item type="text" title="时区" desc="定时任务按照该时区的时间运行，重启面板生效" v-model="allSetting.timeLocation"></setting-list-item>
+                                       </a-list>
+                                    </div>
+                                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+				       <a-list item-layout="horizontal" style="background: white">
+			               <a-form style="background: white; padding: 20px">
+                                       <a-form-item label="原用户名">
+					    <a-input v-model="user.oldUsername" style="max-width: 300px"></a-input>
+				       </a-form-item>
+					<a-form-item label="原密码">
+					    <a-input type="password" v-model="user.oldPassword"
+						     style="max-width: 300px"></a-input>
+					</a-form-item>
+					<a-form-item label="新用户名">
+					    <a-input v-model="user.newUsername" style="max-width: 300px"></a-input>
+					</a-form-item>
+					<a-form-item label="新密码">
+					    <a-input type="password" v-model="user.newPassword"
+						     style="max-width: 300px"></a-input>
+					</a-form-item>
+					<a-form-item>
+					    <a-button type="primary" @click="updateUser">修改</a-button>
+					</a-form-item>
+                                       </a-form>
+                                       </a-list>
+                                    </div>
+                                    <div class="tab-pane fade" id="v-pills-xray" role="tabpanel" aria-labelledby="v-pills-xray-tab">
+				       <a-list item-layout="horizontal" style="background: white">
+                                         <setting-list-item type="textarea" title="xray 配置模版" desc="以此模版为基础生成最终的 xray 配置文件，重启面板生效" v-model="allSetting.xrayTemplateConfig"></setting-list-item>
+                                       </a-list>
+                                    </div>
+                                    <div class="tab-pane fade" id="v-pills-telegram" role="tabpanel" aria-labelledby="v-pills-telegram-tab">
+				       <a-list item-layout="horizontal" style="background: white">
+				          <setting-list-item type="switch" title="启用Telegram Bot" desc="重启面板生效"  v-model="allSetting.tgBotEnable"></setting-list-item>
+                                          <setting-list-item type="text" title="Telegram Bot TOKEN" desc="从 @botfather 获取TOKEN"  v-model="allSetting.tgBotToken"></setting-list-item>
+                                          <setting-list-item type="number" title="Telegram User ID" desc="从 @userinfobot 获取User ID"  v-model.number="allSetting.tgBotChatId"></setting-list-item>
+                                          <setting-list-item type="text" title="Bot 通知时间" desc="使用Crontab定时格式，格式生成器：https://cron.qqe2.com/"  v-model="allSetting.tgRunTime"></setting-list-item>
+                                       </a-list>
+                                    </div>
+                                 </div>
+                              </div>
+                   	      <button @click="updateAllSetting" class="btn btn-primary mb-3">保存设置</button>
+			      <button @click="restartPanel" class="btn btn-success mb-3">重启面板</button>
+			   </div>
+                        </div>
+                     </div>
+            </div>
+         </div>
+      </div>
+      <!-- Wrapper END -->
+      <!-- Footer -->
+      <footer class="bg-white iq-footer">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-lg-6">
+                  <ul class="list-inline mb-0">
+                     <li class="list-inline-item"><a href="https://github.com/taffychan/x-ui">GitHub</a></li>
+                  </ul>
+               </div>
+               <div class="col-lg-6 text-right">
+                  Copyright 2022 <a href="https://github.com/taffychan/x-ui">X-UI</a> All Rights Reserved.
+               </div>
+            </div>
+            </div>
+         </div>
+      </footer>
+
+        </a-layout-content>
+    </a-layout>
+</a-layout>
+
+      <!-- Footer END -->
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="{{ .base_path }}assets/js/jquery.min.js"></script>
+      <script src="{{ .base_path }}assets/js/popper.min.js"></script>
+      <script src="{{ .base_path }}assets/js/bootstrap.min.js"></script>
+      <!-- Appear JavaScript -->
+      <script src="{{ .base_path }}assets/js/jquery.appear.js"></script>
+      <!-- Countdown JavaScript -->
+      <script src="{{ .base_path }}assets/js/countdown.min.js"></script>
+      <!-- Counterup JavaScript -->
+      <script src="{{ .base_path }}assets/js/waypoints.min.js"></script>
+      <script src="{{ .base_path }}assets/js/jquery.counterup.min.js"></script>
+      <!-- Wow JavaScript -->
+      <script src="{{ .base_path }}assets/js/wow.min.js"></script>
+      <!-- Apexcharts JavaScript -->
+      <script src="{{ .base_path }}assets/js/apexcharts.js"></script>
+      <!-- Slick JavaScript -->
+      <script src="{{ .base_path }}assets/js/slick.min.js"></script>
+      <!-- Select2 JavaScript -->
+      <script src="{{ .base_path }}assets/js/select2.min.js"></script>
+      <!-- Owl Carousel JavaScript -->
+      <script src="{{ .base_path }}assets/js/owl.carousel.min.js"></script>
+      <!-- Magnific Popup JavaScript -->
+      <script src="{{ .base_path }}assets/js/jquery.magnific-popup.min.js"></script>
+      <!-- Smooth Scrollbar JavaScript -->
+      <script src="{{ .base_path }}assets/js/smooth-scrollbar.js"></script>
+      <!-- lottie JavaScript -->
+      <script src="{{ .base_path }}assets/js/lottie.js"></script>
+      <!-- Chart Custom JavaScript -->
+      <script src="{{ .base_path }}assets/js/chart-custom.js"></script>
+      <!-- Custom JavaScript -->
+      <script src="{{ .base_path }}assets/js/custom.js"></script>
+
+{{template "js" .}}
+{{template "component/setting"}}
+
+<script>
 
     const app = new Vue({
         delimiters: ['[[', ']]'],
@@ -319,6 +331,6 @@
         },
     });
 
-</script>   
- </body>
+</script>
+</body>
 </html>
