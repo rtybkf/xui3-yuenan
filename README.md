@@ -8,6 +8,8 @@
 wget -N --no-check-certificate https://raw.githubusercontents.com/taffychan/x-ui/main/install.sh && bash install.sh
 ```
 
+> 可直接将面板原版升级至本优化版
+
 > 如提示 `wget: command not found` 请安装wget后再执行本脚本
 
 > CentOS: `yum install -y wget` Debian / Ubuntu: `apt install -y wget`
