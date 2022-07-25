@@ -88,7 +88,7 @@ before_show_menu() {
 }
 
 install() {
-    bash <(curl -Ls https://raw.githubusercontents.com/taffychan/x-ui/main/install.sh)
+    bash <(curl -Ls https://raw.githubusercontent.com/taffychan/x-ui/main/install.sh)
     if [[ $? == 0 ]]; then
         if [[ $# == 0 ]]; then
             start
@@ -109,7 +109,7 @@ update() {
         last_version=$(curl -Ls "https://api.github.com/repos/taffychan/x-ui/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
         if [[ -z "$last_version" ]]; then
             red "检测 x-ui 版本失败，可能是超出 Github API 限制，正在使用备用源检测最新版本"
-            last_version=$(curl -sm8 https://raw.githubusercontents.com/taffychan/x-ui/main/config/version)
+            last_version=$(curl -sm8 https://raw.githubusercontent.com/taffychan/x-ui/main/config/version)
             if [[ -z "$last_version" ]]; then
                 red "检测 x-ui 版本失败，请确保你的服务器能够连接 Github 服务"
                 rm -f install.sh
@@ -132,7 +132,7 @@ update() {
         chmod +x x-ui bin/xray-linux-$(archAffix)
         cp -f x-ui.service /etc/systemd/system/
         
-        wget -N --no-check-certificate https://raw.githubusercontents.com/taffychan/x-ui/main/x-ui.sh -O /usr/bin/x-ui
+        wget -N --no-check-certificate https://raw.githubusercontent.com/taffychan/x-ui/main/x-ui.sh -O /usr/bin/x-ui
         chmod +x /usr/local/x-ui/x-ui.sh
         chmod +x /usr/bin/x-ui
         
@@ -321,7 +321,7 @@ migrate_v2_ui() {
 
 install_bbr() {
     # temporary workaround for installing bbr
-    bash <(curl -L -s https://raw.githubusercontents.com/teddysun/across/master/bbr.sh)
+    bash <(curl -L -s https://raw.githubusercontent.com/teddysun/across/master/bbr.sh)
     echo ""
     before_show_menu
 }
@@ -548,9 +548,9 @@ show_menu() {
         12) check_install && enable_xui ;;
         13) check_install && disable_xui ;;
         14) install_bbr ;;
-        15) wget -N --no-check-certificate https://raw.githubusercontents.com/taffychan/acme/main/acme.sh && bash acme.sh && before_show_menu ;;
+        15) wget -N --no-check-certificate https://raw.githubusercontent.com/taffychan/acme/main/acme.sh && bash acme.sh && before_show_menu ;;
         16) open_ports ;;
-        17) wget -N --no-check-certificate https://raw.githubusercontents.com/taffychan/warp/main/warp.sh && bash warp.sh && before_show_menu ;;
+        17) wget -N --no-check-certificate https://raw.githubusercontent.com/taffychan/warp/main/warp.sh && bash warp.sh && before_show_menu ;;
         *) red "请输入正确的数字 [0-17]" ;;
     esac
 }
