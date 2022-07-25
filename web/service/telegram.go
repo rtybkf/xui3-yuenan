@@ -149,9 +149,9 @@ func (s *TelegramService) StartRun() {
 		case "restart":
 			err := s.xrayService.RestartXray(true)
 			if err != nil {
-				msg.Text = fmt.Sprintln("重启xray核心失败, err: ", err)
+				msg.Text = fmt.Sprintln("重启xray服务失败, err: ", err)
 			} else {
-				msg.Text = "已成功重启xray核心"
+				msg.Text = "已成功重启xray服务"
 			}
 
 		case "disable":
