@@ -450,6 +450,13 @@ open_ports(){
     before_show_menu
 }
 
+update_geo(){
+    systemctl stop x-ui
+    wget -N https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat
+    wget -N https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat
+    systemctl start x-ui
+}
+
 check_login_info(){
     yellow "正在检查VPS系统及x-ui面板配置, 请稍等..."
     
