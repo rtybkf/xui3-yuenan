@@ -27,9 +27,9 @@ import (
 type ProcessState string
 
 const (
-	Running ProcessState = "running"
-	Stop    ProcessState = "stop"
-	Error   ProcessState = "error"
+	Running ProcessState = "运行中"
+	Stop    ProcessState = "已停止"
+	Error   ProcessState = "错误"
 )
 
 type Status struct {
