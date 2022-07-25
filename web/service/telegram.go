@@ -54,7 +54,7 @@ func (s *TelegramService) GetsystemStatus() string {
 	}
 
 	// xray version
-	status += fmt.Sprintf("xray内核版本: %s\r\n", s.xrayService.GetXrayVersion())
+	status += fmt.Sprintf("目前xray内核版本: %s\r\n", s.xrayService.GetXrayVersion())
 
 	// ip address
 	var ip string
