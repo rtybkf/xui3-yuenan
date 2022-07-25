@@ -231,7 +231,7 @@ func (s *TelegramService) StartRun() {
 			
 /help 获取bot的帮助信息 (此菜单)
 /delete [PORT] 删除对应端口的节点
-/restart 重启xray内核
+/restart 重启xray服务
 /status 获取当前系统状态
 /enable [PORT] 开启对应端口的节点
 /disable [PORT] 关闭对应端口的节点
