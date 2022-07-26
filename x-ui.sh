@@ -518,7 +518,7 @@ show_menu() {
  ${GREEN}12.${PLAIN} 设置 x-ui 开机自启
  ${GREEN}13.${PLAIN} 取消 x-ui 开机自启
 ————————————————
- ${GREEN}14.${PLAIN} 一键安装 bbr (最新内核)
+ ${GREEN}14.${PLAIN} 更新 Geosite 和 GeoIP
  ${GREEN}15.${PLAIN} 一键安装 bbr (最新内核)
  ${GREEN}16.${PLAIN} 一键申请证书 (acme脚本申请)
  ${GREEN}17.${PLAIN} VPS防火墙放开所有网络端口
