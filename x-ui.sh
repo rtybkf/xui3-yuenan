@@ -452,9 +452,12 @@ open_ports(){
 
 update_geo(){
     systemctl stop x-ui
+    cd /usr/local/x-ui/bin
+    rm -f geoip.dat geosite.dat
     wget -N https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat
     wget -N https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat
     systemctl start x-ui
+    green "Geosite 和 GeoIP 已更新成功！"
 }
 
 check_login_info(){
@@ -516,9 +519,10 @@ show_menu() {
  ${GREEN}13.${PLAIN} 取消 x-ui 开机自启
 ————————————————
  ${GREEN}14.${PLAIN} 一键安装 bbr (最新内核)
- ${GREEN}15.${PLAIN} 一键申请证书 (acme脚本申请)
- ${GREEN}16.${PLAIN} VPS防火墙放开所有网络端口
- ${GREEN}17.${PLAIN} 安装并配置CloudFlare WARP
+ ${GREEN}15.${PLAIN} 一键安装 bbr (最新内核)
+ ${GREEN}16.${PLAIN} 一键申请证书 (acme脚本申请)
+ ${GREEN}17.${PLAIN} VPS防火墙放开所有网络端口
+ ${GREEN}18.${PLAIN} 安装并配置CloudFlare WARP
     "
     show_status
     echo ""
@@ -530,7 +534,7 @@ show_menu() {
         echo -e "面板IPv4登录地址为: ${GREEN}http://$v4:$config_port ${PLAIN}"
         echo -e "面板IPv6登录地址为: ${GREEN}http://[$v6]:$config_port ${PLAIN}"
     fi
-    echo && read -rp "请输入选择 [0-17]: " num
+    echo && read -rp "请输入选项 [0-18]: " num
     
     case "${num}" in
         0) exit 1 ;;
@@ -547,11 +551,12 @@ show_menu() {
         11) check_install && show_log ;;
         12) check_install && enable_xui ;;
         13) check_install && disable_xui ;;
-        14) install_bbr ;;
-        15) wget -N --no-check-certificate https://raw.githubusercontent.com/taffychan/acme/main/acme.sh && bash acme.sh && before_show_menu ;;
-        16) open_ports ;;
-        17) wget -N --no-check-certificate https://raw.githubusercontent.com/taffychan/warp/main/warp.sh && bash warp.sh && before_show_menu ;;
-        *) red "请输入正确的数字 [0-17]" ;;
+        14) update_geo ;;
+        15) install_bbr ;;
+        16) wget -N --no-check-certificate https://raw.githubusercontent.com/taffychan/acme/main/acme.sh && bash acme.sh && before_show_menu ;;
+        17) open_ports ;;
+        18) wget -N --no-check-certificate https://raw.githubusercontent.com/taffychan/warp/main/warp.sh && bash warp.sh && before_show_menu ;;
+        *) red "请输入正确的选项 [0-18]" ;;
     esac
 }
 
