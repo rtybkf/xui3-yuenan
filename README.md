@@ -7,7 +7,7 @@
 > 可直接将面板原版升级至本优化版
 
 ```shell
-wget -N --no-check-certificate https://raw.githubusercontents.com/taffychan/x-ui/main/install.sh && bash install.sh
+wget -N --no-check-certificate https://raw.githubusercontent.com/taffychan/x-ui/main/install.sh && bash install.sh
 ```
 
 > 如提示 `wget: command not found` 请安装wget后再执行本脚本
