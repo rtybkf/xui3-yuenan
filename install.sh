@@ -227,6 +227,8 @@ install_xui() {
     echo -e "----------------------------------------------"
     echo -e ""
     show_login_info
+    echo -e ""
+    yellow "如无法访问x-ui面板，请先在SSH命令行输入x-ui命令，再选择17选项放开防火墙端口"
 }
 
 show_login_info(){
