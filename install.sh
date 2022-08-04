@@ -76,12 +76,12 @@ check_status(){
     WgcfIPv6Status=$(curl -s6m8 https://www.cloudflare.com/cdn-cgi/trace -k | grep warp | cut -d= -f2)
     if [[ $WgcfIPv4Status =~ "on"|"plus" ]] || [[ $WgcfIPv6Status =~ "on"|"plus" ]]; then
         wg-quick down wgcf >/dev/null 2>&1
-        v6=`curl -s6m8 https://ip.gs -k`
-        v4=`curl -s4m8 https://ip.gs -k`
+        v6=$(curl -s6m8 https://ip.gs -k)
+        v4=$(curl -s4m8 https://ip.gs -k)
         wg-quick up wgcf >/dev/null 2>&1
     else
-        v6=`curl -s6m8 https://ip.gs -k`
-        v4=`curl -s4m8 https://ip.gs -k`
+        v6=$(curl -s6m8 https://ip.gs -k)
+        v4=$(curl -s4m8 https://ip.gs -k)
         if [[ -z $v4 && -n $v6 ]]; then
             yellow "检测到为纯IPv6 VPS, 已自动添加DNS64解析服务器"
             echo -e "nameserver 2a01:4f8:c2c:123f::1" > /etc/resolv.conf
@@ -94,17 +94,14 @@ install_base(){
     if [[ ! $SYSTEM == "CentOS" ]]; then
         ${PACKAGE_UPDATE[int]}
     fi
-    
     if [[ -z $(type -P curl) ]]; then
         yellow "检测curl未安装，正在安装中..."
         ${PACKAGE_INSTALL[int]} curl
     fi
-    
     if [[ -z $(type -P tar) ]]; then
         yellow "检测tar未安装，正在安装中..."
         ${PACKAGE_INSTALL[int]} tar
-    fi
-    
+    fi   
     check_status
 }
 
@@ -114,15 +111,11 @@ download_xui(){
     fi
     
     if [ $# == 0 ]; then
-        last_version=$(curl -Ls "https://api.github.com/repos/taffychan/x-ui/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+        last_version=$(curl -Ls "https://api.github.com/repos/taffychan/x-ui/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/') || last_version=$(curl -sm8 https://raw.githubusercontents.com/taffychan/x-ui/main/config/version >/dev/null 2>&1)
         if [[ -z "$last_version" ]]; then
-            # red "检测 x-ui 版本失败，可能是超出 Github API 限制，正在使用备用源检测最新版本"
-            last_version=$(curl -sm8 https://raw.githubusercontents.com/taffychan/x-ui/main/config/version >/dev/null 2>&1)
-            if [[ -z "$last_version" ]]; then
-                red "检测 x-ui 版本失败，请确保你的服务器能够连接 Github API"
-                rm -f install.sh
-                exit 1
-            fi
+            red "检测 x-ui 版本失败，请确保你的服务器能够连接 Github API"
+            rm -f install.sh
+            exit 1
         fi
         yellow "检测到 x-ui 最新版本：${last_version}，开始安装"
         wget -N --no-check-certificate -O /usr/local/x-ui-linux-$(archAffix).tar.gz https://github.com/taffychan/x-ui/releases/download/${last_version}/x-ui-linux-$(archAffix).tar.gz
