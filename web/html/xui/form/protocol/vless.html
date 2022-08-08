@@ -18,6 +18,10 @@
             <a-select-option v-for="key in FLOW_CONTROL" :value="key">[[ key ]]</a-select-option>
         </a-select>
     </a-form-item>
+    <a-form-item  layout="inline">
+        <a-icon v-if="index != 0" type="delete" @click="() => inbound.settings.delVLESS(index)"
+            style="color: rgb(255, 77, 79);cursor: pointer;" />
+    </a-form-item>
 </a-form>
 
 <a-form layout="inline">
