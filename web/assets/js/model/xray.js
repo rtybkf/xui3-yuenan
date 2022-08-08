@@ -1264,7 +1264,15 @@ Inbound.VLESSSettings = class extends Inbound.Settings {
         this.decryption = decryption;
         this.fallbacks = fallbacks;
     }
+    
+    addVLESS() {
+        this.vlesses.push(new Inbound.VLESSSettings.VLESS());
+    }
 
+    delVLESS(index) {
+        this.vlesses.splice(index, 1);
+    }
+    
     addFallback() {
         this.fallbacks.push(new Inbound.VLESSSettings.Fallback());
     }
