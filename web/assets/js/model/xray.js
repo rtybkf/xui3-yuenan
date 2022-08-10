@@ -1361,6 +1361,14 @@ Inbound.TrojanSettings = class extends Inbound.Settings {
         this.fallbacks = fallbacks;
     }
 
+    addTrojan() {
+        this.clients.push(new Inbound.TrojanSettings.TROJAN());
+    }
+
+    delTrojan(index) {
+        this.clients.splice(index, 1);
+    }
+
     addTrojanFallback() {
         this.fallbacks.push(new Inbound.TrojanSettings.Fallback());
     }
