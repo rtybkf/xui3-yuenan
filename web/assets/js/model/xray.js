@@ -1362,7 +1362,7 @@ Inbound.TrojanSettings = class extends Inbound.Settings {
     }
 
     addTrojan() {
-        this.clients.push(new Inbound.TrojanSettings.TROJAN());
+        this.clients.push(new Inbound.TrojanSettings.Client());
     }
 
     delTrojan(index) {
