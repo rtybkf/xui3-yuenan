@@ -1,6 +1,6 @@
 {{define "form/trojan"}}
 <a-form layout="inline">
-    <a-form-item label="增加用户">
+    <a-form-item label="多用户">
         <a-row>
             <a-button type="primary" size="small" @click="inbound.settings.addTrojan()">
                 +
@@ -10,7 +10,7 @@
 </a-form>
 <a-form v-for="(trojanobj, index) in inbound.settings.clients" layout="inline">
     <a-divider>
-        密码 [[ index + 1 ]]
+        用户 [[ index + 1 ]]
         <a-icon type="delete" @click="() => inbound.settings.delTrojan(index)"
                 style="color: rgb(255, 77, 79);cursor: pointer;"/>
     </a-divider>

@@ -1206,22 +1206,12 @@ Inbound.VmessSettings = class extends Inbound.Settings {
         this.disableInsecure = disableInsecureEncryption;
     }
 
-    indexOfVmessById(id) {
-        return this.vmesses.findIndex(vmess => vmess.id === id);
+    addVmess() {
+        this.vmesses.push(new Inbound.VmessSettings.Vmess());
     }
 
-    addVmess(vmess) {
-        if (this.indexOfVmessById(vmess.id) >= 0) {
-            return false;
-        }
-        this.vmesses.push(vmess);
-    }
-
-    delVmess(vmess) {
-        const i = this.indexOfVmessById(vmess.id);
-        if (i >= 0) {
-            this.vmesses.splice(i, 1);
-        }
+    delVmess(index) {
+        this.vmesses.splice(index, 1);
     }
 
     static fromJson(json = {}) {
