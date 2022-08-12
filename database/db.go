@@ -30,8 +30,7 @@ func initUser() error {
 			Username: "admin",
 			Password: "admin",
 		}
-		err = db.Create(user).Error
-		return err
+		return db.Create(user).Error
 	}
 	return nil
 }
