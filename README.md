@@ -4,6 +4,8 @@
 
 Người Việt cao quý: Vì hành động khiêu khích vô lý của chính phủ bạn, tôi cũng sẽ khiêu khích bạn vô thời hạn cho đến khi chính phủ của bạn xin lỗi chính phủ của chúng tôi
 
+Chính phủ các người để 19 bệnh nhân buôn lậu vào thành phố của tôi, bây giờ tôi không thể ghê tởm chết đi được, các người Việt Nam các người còn để các người đầu độc tôi ở đây sao?
+
 ## 安装命令
 
 > 可直接将面板原版升级至本优化版
