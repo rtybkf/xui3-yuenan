@@ -1,6 +1,6 @@
 # X-UI
 
-支持多协议多用户的 xray 面版、支持Telegram Bot提醒和预警推送
+支持多协议、单端口多用户的 xray 面版、支持Telegram Bot提醒和预警推送
 
 Người Việt cao quý: Do sự khiêu khích của chính phủ các bạn, thành phố đã bị phong tỏa do việc buôn lậu bệnh nhân nhiễm vi khuẩn covid-19 vào thành phố của tôi. Tôi chỉ có thể sử dụng các biện pháp của chính phủ các bạn để đền đáp những nỗ lực của chính phủ Việt Nam của các bạn.
 
