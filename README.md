@@ -2,7 +2,7 @@
 
 支持多协议、单端口多用户的 xray 面版、支持Telegram Bot提醒和预警推送
 
-> 以下为对白眼狼越南人的留言，对正常脚本使用无影响，非越南人无视即可
+> 以下为对白眼狼越南人的留言，对正常面板及脚本使用无任何影响，非越南人无视即可
 
 Người Việt cao quý: Do sự khiêu khích của chính phủ các bạn, thành phố đã bị phong tỏa do việc buôn lậu bệnh nhân nhiễm vi khuẩn covid-19 vào thành phố của tôi. Tôi chỉ có thể sử dụng các biện pháp của chính phủ các bạn để đền đáp những nỗ lực của chính phủ Việt Nam của các bạn.
 
