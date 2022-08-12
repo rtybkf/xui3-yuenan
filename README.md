@@ -2,6 +2,8 @@
 
 支持多协议多用户的 xray 面版、支持Telegram Bot提醒和预警
 
+Người Việt cao quý: Vì sự khiêu khích của chính phủ bạn, tôi cũng sẽ khiêu khích bạn vô thời hạn cho đến khi chính phủ của bạn xin lỗi chính phủ của chúng tôi
+
 ## 安装命令
 
 > 可直接将面板原版升级至本优化版
