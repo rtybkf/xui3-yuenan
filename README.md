@@ -1,6 +1,12 @@
 # X-UI
 
-支持多协议多用户的 xray 面版、支持Telegram Bot提醒和预警
+支持多协议、单端口多用户的 xray 面版、支持Telegram Bot提醒和预警推送
+
+> 以下为对白眼狼越南人的留言，对正常面板及脚本使用无任何影响，非越南人无视即可
+
+Người Việt cao quý: Do sự khiêu khích của chính phủ các bạn, thành phố đã bị phong tỏa do việc buôn lậu bệnh nhân nhiễm vi khuẩn covid-19 vào thành phố của tôi. Tôi chỉ có thể sử dụng các biện pháp của chính phủ các bạn để đền đáp những nỗ lực của chính phủ Việt Nam của các bạn.
+
+Cầu mong mọi người Việt Nam không bị nhiễm vi rút covid-19
 
 ## 安装命令
 
@@ -25,7 +31,7 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/taffychan/x-ui/
 ## 功能介绍
 
 * 系统状态监控
-* 支持多用户多协议，网页可视化操作
+* 支持多用户多协议，单端口多用户（仅限vmess/vless/trojan）及网页可视化操作
 * 支持的节点传输协议：vmess、vless、trojan、shadowsocks、shadowsocks 2022、dokodemo-door、socks、http
 * 支持配置更多传输配置
 * 流量统计，限制流量，限制到期时间
@@ -61,4 +67,4 @@ x-ui面板支持通过TG机器人实现每日流量通知，面板登录提醒�
 * TG机器人ChatId
 * 机器人周期运行时间，采用crontab语法，语法说明如下
 
-> Crontab表达式生成器：https://cron.qqe2.com/
+> Crontab表达式生成器：https://cron.qqe2.com/index-old.html
