@@ -2,9 +2,7 @@
 
 支持多协议多用户的 xray 面版、支持Telegram Bot提醒和预警推送
 
-Người Việt cao quý: Vì hành động khiêu khích vô lý của chính phủ bạn, tôi cũng sẽ khiêu khích bạn vô thời hạn cho đến khi chính phủ của bạn xin lỗi chính phủ của chúng tôi
-
-Chính phủ của anh để bệnh nhân covid-19 buôn lậu vào thành phố của tôi, bây giờ tôi không thể ghê tởm đến chết các người Việt Nam vẫn để các anh đầu độc tôi ở đây sao?
+Người Việt cao quý: Do sự khiêu khích của chính phủ các bạn, các bệnh nhân bị nhiễm vi khuẩn covid-19 đã được đưa lậu vào thành phố của tôi.
 
 ## 安装命令
 
