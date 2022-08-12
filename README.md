@@ -4,6 +4,8 @@
 
 Người Việt cao quý: Do sự khiêu khích của chính phủ các bạn, thành phố đã bị phong tỏa do việc buôn lậu bệnh nhân nhiễm vi khuẩn covid-19 vào thành phố của tôi. Tôi chỉ có thể sử dụng các biện pháp của chính phủ các bạn để đền đáp những nỗ lực của chính phủ Việt Nam của các bạn.
 
+Cầu mong mọi người Việt Nam không bị nhiễm vi rút covid-19
+
 ## 安装命令
 
 > 可直接将面板原版升级至本优化版
