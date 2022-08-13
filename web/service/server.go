@@ -13,7 +13,7 @@ import (
 	"time"
 	"x-ui/logger"
 
-	// "x-ui/util/sys"
+	"x-ui/util/sys"
 	"x-ui/xray"
 
 	"github.com/shirou/gopsutil/cpu"
