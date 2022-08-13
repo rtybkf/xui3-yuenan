@@ -1,140 +1,155 @@
 <!DOCTYPE html>
 <html>
 {{template "head" .}}
+
 <body>
-<a-layout id="app" v-cloak>
+    <a-layout id="app" v-cloak>
         <a-layout-content>
-      <!-- loader Start -->
-      <div id="loading">
-         <div id="loading-center">
-            <div class="loader">
-               <div class="cube">
-                  <div class="sides">
-                     <div class="top"></div>
-                     <div class="right"></div>
-                     <div class="bottom"></div>
-                     <div class="left"></div>
-                     <div class="front"></div>
-                     <div class="back"></div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- loader END -->
-        <!-- Sign in Start -->
-        <section class="sign-in-page bg-white" style="max-width: 100%">
-            <div class="container-fluid p-0">
-                <div class="row no-gutters">
-                    <div class="col-sm-6 align-self-center">
-                        <div class="sign-in-from">
-                            <h1 class="mb-0">欢迎使用X-UI面板</h1>
-                            <p>请输入你的用户名和密码以登录X-UI面板</p>
-                            <form class="mt-4">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">用户名</label>
-				    <a-input v-model.trim="user.username" id="exampleInputEmail1" class="form-control mb-0" placeholder='username' @keydown.enter.native="login" autofocus> </a-input>
-				</div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">密码</label>
-				    <a-input type="password" v-model.trim="user.password" id="exampleInputPassword1" class="form-control mb-0" placeholder='password' @keydown.enter.native="login"> </a-input>
-                                </div>
-                                <div class="d-inline-block w-100">
-				     <div class="custom-control d-inline-block mt-2 pt-1">
-                                         <label class="custom-control-label" >在此设备上记住登录</label>
-                                     </div>
-				     <button @click="login" class="btn btn-primary float-right">登录</button>
-                                </div>
-                                <div class="sign-info">
-				     <span class="dark-color d-inline-block line-height-2">本项目还在努力开发中，有问题提Issues！</span>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 text-center">
-                        <div class="sign-in-detail text-white" style="background: url({{ .base_path }}assets/images/login/2.jpg) no-repeat 0 0; background-size: cover;">
-                            <a class="sign-in-logo mb-5" href="#"><img src="{{ .base_path }}assets/images/logo-white.png" class="img-fluid" alt="logo"></a>
-                            <div class="owl-carousel" data-autoplay="true" data-loop="true" data-nav="false" data-dots="true" data-items="1" data-items-laptop="1" data-items-tab="1" data-items-mobile="1" data-items-mobile-sm="1" data-margin="0">
-                                <div class="item">
-                                    <img src="{{ .base_path }}assets/images/login/1.png" class="img-fluid mb-4" alt="logo">
-                                    <h4 class="mb-1 text-white">安全保障</h4>
-                                    <p>在访问 Internet 时使用 VPN 来提高安全性。</p>
-                                </div>
-                                <div class="item">
-                                    <img src="{{ .base_path }}assets/images/login/1.png" class="img-fluid mb-4" alt="logo">
-                                    <h4 class="mb-1 text-white">加快访问速度</h4>
-                                    <p>通过您使用的VPS服务器以加快网络访问速度。</p>
-                                </div>
-                                <div class="item">
-                                    <img src="{{ .base_path }}assets/images/login/1.png" class="img-fluid mb-4" alt="logo">
-                                    <h4 class="mb-1 text-white">SNI 协议提供更高的安全性</h4>
-                                    <p>SNI 为您省钱，因为您不必购买多个 IP 地址。</p>
-                                </div>
+            <!-- loader Start -->
+            <div id="loading">
+                <div id="loading-center">
+                    <div class="loader">
+                        <div class="cube">
+                            <div class="sides">
+                                <div class="top"></div>
+                                <div class="right"></div>
+                                <div class="bottom"></div>
+                                <div class="left"></div>
+                                <div class="front"></div>
+                                <div class="back"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+            <!-- loader END -->
+            <!-- Sign in Start -->
+            <section class="sign-in-page bg-white" style="max-width: 100%">
+                <div class="container-fluid p-0">
+                    <div class="row no-gutters">
+                        <div class="col-sm-6 align-self-center">
+                            <div class="sign-in-from">
+                                <h1 class="mb-0">欢迎使用X-UI面板</h1>
+                                <p>请输入你的用户名和密码以登录X-UI面板</p>
+                                <form class="mt-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">用户名</label>
+                                        <a-input v-model.trim="user.username" id="exampleInputEmail1"
+                                            class="form-control mb-0" placeholder='username'
+                                            @keydown.enter.native="login" autofocus> </a-input>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">密码</label>
+                                        <a-input type="password" v-model.trim="user.password" id="exampleInputPassword1"
+                                            class="form-control mb-0" placeholder='password'
+                                            @keydown.enter.native="login"> </a-input>
+                                    </div>
+                                    <div class="d-inline-block w-100">
+                                        <div class="custom-control d-inline-block mt-2 pt-1">
+                                            <label class="custom-control-label">在此设备上记住登录</label>
+                                        </div>
+                                        <button @click="login" class="btn btn-primary float-right">登录</button>
+                                    </div>
+                                    <div class="sign-info">
+                                        <span
+                                            class="dark-color d-inline-block line-height-2">本项目还在努力开发中，有问题提Issues！</span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 text-center">
+                            <div class="sign-in-detail text-white"
+                                style="background: url({{ .base_path }}assets/images/login/2.jpg) no-repeat 0 0; background-size: cover;">
+                                <a class="sign-in-logo mb-5" href="#"><img
+                                        src="{{ .base_path }}assets/images/logo-white.png" class="img-fluid"
+                                        alt="logo"></a>
+                                <div class="owl-carousel" data-autoplay="true" data-loop="true" data-nav="false"
+                                    data-dots="true" data-items="1" data-items-laptop="1" data-items-tab="1"
+                                    data-items-mobile="1" data-items-mobile-sm="1" data-margin="0">
+                                    <div class="item">
+                                        <img src="{{ .base_path }}assets/images/login/1.png" class="img-fluid mb-4"
+                                            alt="logo">
+                                        <h4 class="mb-1 text-white">安全保障</h4>
+                                        <p>在访问 Internet 时使用 VPN 来提高安全性。</p>
+                                    </div>
+                                    <div class="item">
+                                        <img src="{{ .base_path }}assets/images/login/1.png" class="img-fluid mb-4"
+                                            alt="logo">
+                                        <h4 class="mb-1 text-white">加快访问速度</h4>
+                                        <p>通过您使用的VPS服务器以加快网络访问速度。</p>
+                                    </div>
+                                    <div class="item">
+                                        <img src="{{ .base_path }}assets/images/login/1.png" class="img-fluid mb-4"
+                                            alt="logo">
+                                        <h4 class="mb-1 text-white">SNI 协议提供更高的安全性</h4>
+                                        <p>SNI 为您省钱，因为您不必购买多个 IP 地址。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </a-layout-content>
-</a-layout>
+    </a-layout>
 
-      <!-- Footer END -->
-      <!-- Optional JavaScript -->
-      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src="{{ .base_path }}assets/js/jquery.min.js"></script>
-      <script src="{{ .base_path }}assets/js/popper.min.js"></script>
-      <script src="{{ .base_path }}assets/js/bootstrap.min.js"></script>
-      <!-- Appear JavaScript -->
-      <script src="{{ .base_path }}assets/js/jquery.appear.js"></script>
-      <!-- Countdown JavaScript -->
-      <script src="{{ .base_path }}assets/js/countdown.min.js"></script>
-      <!-- Counterup JavaScript -->
-      <script src="{{ .base_path }}assets/js/waypoints.min.js"></script>
-      <script src="{{ .base_path }}assets/js/jquery.counterup.min.js"></script>
-      <!-- Wow JavaScript -->
-      <script src="{{ .base_path }}assets/js/wow.min.js"></script>
-      <!-- Apexcharts JavaScript -->
-      <script src="{{ .base_path }}assets/js/apexcharts.js"></script>
-      <!-- Slick JavaScript -->
-      <script src="{{ .base_path }}assets/js/slick.min.js"></script>
-      <!-- Select2 JavaScript -->
-      <script src="{{ .base_path }}assets/js/select2.min.js"></script>
-      <!-- Owl Carousel JavaScript -->
-      <script src="{{ .base_path }}assets/js/owl.carousel.min.js"></script>
-      <!-- Magnific Popup JavaScript -->
-      <script src="{{ .base_path }}assets/js/jquery.magnific-popup.min.js"></script>
-      <!-- Smooth Scrollbar JavaScript -->
-      <script src="{{ .base_path }}assets/js/smooth-scrollbar.js"></script>
-      <!-- lottie JavaScript -->
-      <script src="{{ .base_path }}assets/js/lottie.js"></script>
-      <!-- Chart Custom JavaScript -->
-      <script src="{{ .base_path }}assets/js/chart-custom.js"></script>
-      <!-- Custom JavaScript -->
-      <script src="{{ .base_path }}assets/js/custom.js"></script>
-      <!-- iconify -->
-      <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+    <!-- Footer END -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{{ .base_path }}assets/js/jquery.min.js"></script>
+    <script src="{{ .base_path }}assets/js/popper.min.js"></script>
+    <script src="{{ .base_path }}assets/js/bootstrap.min.js"></script>
+    <!-- Appear JavaScript -->
+    <script src="{{ .base_path }}assets/js/jquery.appear.js"></script>
+    <!-- Countdown JavaScript -->
+    <script src="{{ .base_path }}assets/js/countdown.min.js"></script>
+    <!-- Counterup JavaScript -->
+    <script src="{{ .base_path }}assets/js/waypoints.min.js"></script>
+    <script src="{{ .base_path }}assets/js/jquery.counterup.min.js"></script>
+    <!-- Wow JavaScript -->
+    <script src="{{ .base_path }}assets/js/wow.min.js"></script>
+    <!-- Apexcharts JavaScript -->
+    <script src="{{ .base_path }}assets/js/apexcharts.js"></script>
+    <!-- Slick JavaScript -->
+    <script src="{{ .base_path }}assets/js/slick.min.js"></script>
+    <!-- Select2 JavaScript -->
+    <script src="{{ .base_path }}assets/js/select2.min.js"></script>
+    <!-- Owl Carousel JavaScript -->
+    <script src="{{ .base_path }}assets/js/owl.carousel.min.js"></script>
+    <!-- Magnific Popup JavaScript -->
+    <script src="{{ .base_path }}assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- Smooth Scrollbar JavaScript -->
+    <script src="{{ .base_path }}assets/js/smooth-scrollbar.js"></script>
+    <!-- lottie JavaScript -->
+    <script src="{{ .base_path }}assets/js/lottie.js"></script>
+    <!-- Chart Custom JavaScript -->
+    <script src="{{ .base_path }}assets/js/chart-custom.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="{{ .base_path }}assets/js/custom.js"></script>
+    <!-- iconify -->
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
 
-{{template "js" .}}
-<script>
-    const app = new Vue({
-        delimiters: ['[[', ']]'],
-        el: '#app',
-        data: {
-            loading: false,
-            user: new User(),
-        },
-        methods: {
-            async login() {
-                this.loading = true;
-                const msg = await HttpUtil.post('/login', this.user);
-                this.loading = false;
-                if (msg.success) {
-                    location.href = basePath + 'xui/';
+    {{template "js" .}}
+    <script>
+        const app = new Vue({
+            delimiters: ['[[', ']]'],
+            el: '#app',
+            data: {
+                loading: false,
+                user: new User(),
+            },
+            methods: {
+                async login() {
+                    this.loading = true;
+                    const msg = await HttpUtil.post('/login', this.user);
+                    this.loading = false;
+                    if (msg.success) {
+                        location.href = basePath + 'xui/';
+                    }
                 }
             }
-        }
-    });
-</script>
+        });
+    </script>
 </body>
+
 </html>

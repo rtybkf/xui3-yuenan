@@ -2,436 +2,472 @@
 <html>
 {{template "head" .}}
 <style>
-    @media (min-width: 769px) {
-        .ant-layout-content {
-            margin-left: 0px;
-	    margin-right:0px; 
-	    margin-top:0px;
-        }
-    }
+   @media (min-width: 769px) {
+      .ant-layout-content {
+         margin-left: 0px;
+         margin-right: 0px;
+         margin-top: 0px;
+      }
+   }
 
-    .ant-col-sm-24 {
-        margin-top: 10px;
-    }
+   .ant-col-sm-24 {
+      margin-top: 10px;
+   }
 </style>
-<body onload="showTime()">
-<a-layout id="app" v-cloak>
-    {{ template "commonSider" . }}
-    <a-layout id="content-layout">
-        <a-layout-content>
-            <a-spin :spinning="spinning" :delay="200" :tip="loadingTip"/>
 
-      <!-- loader Start -->
-      <div id="loading">
-         <div id="loading-center">
-            <div class="loader">
-               <div class="cube">
-                  <div class="sides">
-                     <div class="top"></div>
-                     <div class="right"></div>
-                     <div class="bottom"></div>
-                     <div class="left"></div>
-                     <div class="front"></div>
-                     <div class="back"></div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- loader END -->
-      <!-- Wrapper Start -->
-      <div class="wrapper">
-         <!-- Sidebar  -->
-         <div class="iq-sidebar">
-            <div class="iq-sidebar-logo d-flex justify-content-between">
-               <a href="{{ .base_path }}xui">
-                <img src="{{ .base_path }}assets/images/logo.png" class="img-fluid" alt="">
-               </a>
-               <div class="iq-menu-bt align-self-center">
-                  <div class="wrapper-menu">
-                     <div class="line-menu half start"></div>
-                     <div class="line-menu"></div>
-                     <div class="line-menu half end"></div>
-                  </div>
-               </div>
-            </div>
-            <div id="sidebar-scrollbar">
-               <nav class="iq-sidebar-menu">
-                  <ul id="iq-sidebar-toggle" class="iq-menu">
-                     <li class="iq-menu-title"><i class="ri-separator"></i><span>X-UI 魔改优化版</span></li>
-                     <li class="active">
-                        <a href="#dashboard" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-home-4-line"></i><span>控制面板</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                        <ul id="dashboard" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                           <li class="active"><a href="{{ .base_path }}xui">系统状态</a></li>
-                           <li><a href="{{ .base_path }}xui/inbounds">入站列表</a></li>
-	  		   <li><a href="{{ .base_path }}xui/setting">面板设置</a></li>
-			   <li><a href="{{ .base_path }}logout">退出登录</a></li>
-                        </ul>
-                     </li>
-                  </ul>
-               </nav>
-               <div class="p-3"></div>
-            </div>
-         </div>
-         <!-- TOP Nav Bar -->
-         <div class="iq-top-navbar">
-            <div class="iq-navbar-custom">
-               <div class="iq-sidebar-logo">
-                  <div class="top-logo">
-                     <a href="{{ .base_path }}xui" class="logo">
-                     <img src="{{ .base_path }}assets/images/logo.png" class="img-fluid" alt="">
-                     <span></span>
-                     </a>
-                  </div>
-               </div>
-               <div class="navbar-breadcrumb">
-                  <h5 class="mb-0">X-UI 魔改优化版</h5>
-                  <nav aria-label="breadcrumb">
-                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ .base_path }}xui">控制面板</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">系统状态</li>
-                     </ul>
-                  </nav>
-               </div>
-               <nav class="navbar navbar-expand-lg navbar-light p-0">
-                  <div class="iq-menu-bt align-self-center" style="right: 1%; top: 15px">
-                     <div class="wrapper-menu">
-                        <div class="line-menu half start"></div>
-                        <div class="line-menu"></div>
-                        <div class="line-menu half end"></div>
+<body onload="showTime()">
+   <a-layout id="app" v-cloak>
+      {{ template "commonSider" . }}
+      <a-layout id="content-layout">
+         <a-layout-content>
+            <a-spin :spinning="spinning" :delay="200" :tip="loadingTip" />
+
+            <!-- loader Start -->
+            <div id="loading">
+               <div id="loading-center">
+                  <div class="loader">
+                     <div class="cube">
+                        <div class="sides">
+                           <div class="top"></div>
+                           <div class="right"></div>
+                           <div class="bottom"></div>
+                           <div class="left"></div>
+                           <div class="front"></div>
+                           <div class="back"></div>
+                        </div>
                      </div>
                   </div>
-               </nav>
+               </div>
             </div>
-         </div>
-         <!-- TOP Nav Bar END -->
-         <!-- Page Content  -->
-         <div id="content-page" class="content-page">
-            <div class="container-fluid">
-               <div class="row">
-                  <div class="col-lg-12">
-		     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                          <li class="breadcrumb-item"><a href="{{ .base_path }}xui"><i class="ri-home-4-line mr-1 float-left"></i>控制面板</a></li>
-                          <li class="breadcrumb-item active" aria-current="page">系统状态</li>
-                        </ol>
+            <!-- loader END -->
+            <!-- Wrapper Start -->
+            <div class="wrapper">
+               <!-- Sidebar  -->
+               <div class="iq-sidebar">
+                  <div class="iq-sidebar-logo d-flex justify-content-between">
+                     <a href="{{ .base_path }}xui">
+                        <img src="{{ .base_path }}assets/images/logo.png" class="img-fluid" alt="">
+                     </a>
+                     <div class="iq-menu-bt align-self-center">
+                        <div class="wrapper-menu">
+                           <div class="line-menu half start"></div>
+                           <div class="line-menu"></div>
+                           <div class="line-menu half end"></div>
+                        </div>
+                     </div>
+                  </div>
+                  <div id="sidebar-scrollbar">
+                     <nav class="iq-sidebar-menu">
+                        <ul id="iq-sidebar-toggle" class="iq-menu">
+                           <li class="iq-menu-title"><i class="ri-separator"></i><span>X-UI 魔改优化版</span></li>
+                           <li class="active">
+                              <a href="#dashboard" class="iq-waves-effect collapsed" data-toggle="collapse"
+                                 aria-expanded="false"><i class="ri-home-4-line"></i><span>控制面板</span><i
+                                    class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                              <ul id="dashboard" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                 <li class="active"><a href="{{ .base_path }}xui">系统状态</a></li>
+                                 <li><a href="{{ .base_path }}xui/inbounds">入站列表</a></li>
+                                 <li><a href="{{ .base_path }}xui/setting">面板设置</a></li>
+                                 <li><a href="{{ .base_path }}logout">退出登录</a></li>
+                              </ul>
+                           </li>
+                        </ul>
                      </nav>
-                     <div class="iq-card">
-                        <div class="iq-card-header d-flex justify-content-between">
-                           <div class="iq-header-title">
-                              <h5 class="card-title">服务器状态</h4>
+                     <div class="p-3"></div>
+                  </div>
+               </div>
+               <!-- TOP Nav Bar -->
+               <div class="iq-top-navbar">
+                  <div class="iq-navbar-custom">
+                     <div class="iq-sidebar-logo">
+                        <div class="top-logo">
+                           <a href="{{ .base_path }}xui" class="logo">
+                              <img src="{{ .base_path }}assets/images/logo.png" class="img-fluid" alt="">
+                              <span></span>
+                           </a>
+                        </div>
+                     </div>
+                     <div class="navbar-breadcrumb">
+                        <h5 class="mb-0">X-UI 魔改优化版</h5>
+                        <nav aria-label="breadcrumb">
+                           <ul class="breadcrumb">
+                              <li class="breadcrumb-item"><a href="{{ .base_path }}xui">控制面板</a></li>
+                              <li class="breadcrumb-item active" aria-current="page">系统状态</li>
+                           </ul>
+                        </nav>
+                     </div>
+                     <nav class="navbar navbar-expand-lg navbar-light p-0">
+                        <div class="iq-menu-bt align-self-center" style="right: 1%; top: 15px">
+                           <div class="wrapper-menu">
+                              <div class="line-menu half start"></div>
+                              <div class="line-menu"></div>
+                              <div class="line-menu half end"></div>
                            </div>
-                           <div class="iq-card-header-toolbar d-flex align-items-center">
-                              <div class="dropdown">
-                                 <span class="dropdown-toggle text-primary" id="dropdownMenuButton3" data-toggle="dropdown">
-                                     <i class="ri-more-2-fill"></i>
-                                 </span>
-                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                    <a-tag class="dropdown-item" @click="openSelectV2rayVersion" href="#">更新 Xray-Core</a-tag>
-                                  </div>
+                        </div>
+                     </nav>
+                  </div>
+               </div>
+               <!-- TOP Nav Bar END -->
+               <!-- Page Content  -->
+               <div id="content-page" class="content-page">
+                  <div class="container-fluid">
+                     <div class="row">
+                        <div class="col-lg-12">
+                           <nav aria-label="breadcrumb">
+                              <ol class="breadcrumb">
+                                 <li class="breadcrumb-item"><a href="{{ .base_path }}xui"><i
+                                          class="ri-home-4-line mr-1 float-left"></i>控制面板</a></li>
+                                 <li class="breadcrumb-item active" aria-current="page">系统状态</li>
+                              </ol>
+                           </nav>
+                           <div class="iq-card">
+                              <div class="iq-card-header d-flex justify-content-between">
+                                 <div class="iq-header-title">
+                                    <h5 class="card-title">服务器状态</h4>
+                                 </div>
+                                 <div class="iq-card-header-toolbar d-flex align-items-center">
+                                    <div class="dropdown">
+                                       <span class="dropdown-toggle text-primary" id="dropdownMenuButton3"
+                                          data-toggle="dropdown">
+                                          <i class="ri-more-2-fill"></i>
+                                       </span>
+                                       <div class="dropdown-menu dropdown-menu-right"
+                                          aria-labelledby="dropdownMenuButton">
+                                          <a-tag class="dropdown-item" @click="openSelectV2rayVersion" href="#">更新
+                                             Xray-Core</a-tag>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="mb-4 iq-card-body">
+                                 <h4 class="small font-weight-bold">CPU <span class="float-right"> [[ status.cpu.percent
+                                       ]]% / 100% </span></h4>
+                                 <div>
+                                    <template>
+                                       <a-progress :percent="status.cpu.percent" style="width: 95%" status="active"
+                                          size="big" />
+                                    </template>
+                                 </div> </br>
+                                 <h4 class="small font-weight-bold">RAM <span class="float-right"> [[
+                                       sizeFormat(status.mem.current) ]] / [[ sizeFormat(status.mem.total) ]] </span>
+                                 </h4>
+                                 <div>
+                                    <template>
+                                       <a-progress :percent="status.mem.percent" style="width: 95%" status="active"
+                                          size="big" />
+                                    </template>
+                                 </div> </br>
+                                 <h4 class="small font-weight-bold">SWAP <span class="float-right"> [[
+                                       sizeFormat(status.swap.current) ]] / [[ sizeFormat(status.swap.total) ]] </span>
+                                 </h4>
+                                 <div>
+                                    <template>
+                                       <a-progress :percent="status.swap.percent" style="width: 95%" status="active"
+                                          size="big" />
+                                    </template>
+                                 </div> </br>
+                                 <h4 class="small font-weight-bold">DISK <span class="float-right"> [[
+                                       sizeFormat(status.disk.current) ]] / [[ sizeFormat(status.disk.total) ]] </span>
+                                 </h4>
+                                 <div>
+                                    <template>
+                                       <a-progress :percent="status.disk.percent" style="width: 95%" status="active"
+                                          size="big" />
+                                    </template>
+                                 </div>
                               </div>
                            </div>
                         </div>
-                        <div class="mb-4 iq-card-body">
-                           <h4 class="small font-weight-bold">CPU <span class="float-right"> [[ status.cpu.percent ]]% / 100% </span></h4>
-                           <div>
-                              <template>
-			              <a-progress :percent="status.cpu.percent" style="width: 95%" status="active" size="big"/>
-                              </template>
-                           </div> </br>
-                           <h4 class="small font-weight-bold">RAM <span class="float-right"> [[ sizeFormat(status.mem.current) ]] / [[ sizeFormat(status.mem.total) ]] </span></h4>
-                             <div>
-                                <template>
-                                        <a-progress :percent="status.mem.percent" style="width: 95%" status="active" size="big"/>
-                                </template>
-                             </div> </br>
-                           <h4 class="small font-weight-bold">SWAP <span class="float-right"> [[ sizeFormat(status.swap.current) ]] / [[ sizeFormat(status.swap.total) ]] </span></h4>
-                             <div>
-                                <template>
-                                        <a-progress :percent="status.swap.percent" style="width: 95%" status="active" size="big"/>
-                                </template>
-                             </div> </br>
-                           <h4 class="small font-weight-bold">DISK <span class="float-right"> [[ sizeFormat(status.disk.current) ]] / [[ sizeFormat(status.disk.total) ]] </span></h4>
-                             <div>
-                                <template>
-                                        <a-progress :percent="status.disk.percent" style="width: 95%" status="active" size="big"/>
-                                </template>
-                             </div>
-			</div>
-                     </div>
-                  </div>
-		  <div class="col-md-6 col-lg-3">
-                     <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden">
-                        <div class="iq-card-body pb-0">
-                           <div class="rounded-circle iq-card-icon iq-bg-danger"><i class="ri-airplay-fill"></i></div>
-                           <span class="float-right line-height-6">Xray-Core 版本信息</span>
-                           <div class="clearfix"></div>
-                           <div class="text-center">
-			     <div class="h5 mb-0 font-weight-bold text-gray-800">
-                               <a-tag :color="status.xray.color">[[ status.xray.state ]]</a-tag>
-                               <a-tooltip v-if="status.xray.state === State.Error">
-                                       <template slot="title">
-                                              <p v-for="line in status.xray.errorMsg.split('\n')">[[ line ]]</p>
-                                       </template>
-                                       <a-icon type="question-circle" theme="filled"></a-icon>
-                               </a-tooltip>
-                               <a-tag color="green" @click="openSelectV2rayVersion">[[ status.xray.version ]]</a-tag>
-                               </br>
-                               <a-tag color="blue" @click="openSelectV2rayVersion">切换版本</a-tag>
-                             </div>
+                        <div class="col-md-6 col-lg-3">
+                           <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden">
+                              <div class="iq-card-body pb-0">
+                                 <div class="rounded-circle iq-card-icon iq-bg-danger"><i class="ri-airplay-fill"></i>
+                                 </div>
+                                 <span class="float-right line-height-6">Xray-Core 版本信息</span>
+                                 <div class="clearfix"></div>
+                                 <div class="text-center">
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                       <a-tag :color="status.xray.color">[[ status.xray.state ]]</a-tag>
+                                       <a-tooltip v-if="status.xray.state === State.Error">
+                                          <template slot="title">
+                                             <p v-for="line in status.xray.errorMsg.split('\n')">[[ line ]]</p>
+                                          </template>
+                                          <a-icon type="question-circle" theme="filled"></a-icon>
+                                       </a-tooltip>
+                                       <a-tag color="green" @click="openSelectV2rayVersion">[[ status.xray.version ]]
+                                       </a-tag>
+                                       </br>
+                                       <a-tag color="blue" @click="openSelectV2rayVersion">切换版本</a-tag>
+                                    </div>
+                                 </div>
+                              </div>
+                              </br>
                            </div>
                         </div>
-                        </br>
-                     </div>
-                  </div>
-                  <div class="col-md-6 col-lg-3">
-                     <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden">
-                        <div class="iq-card-body pb-0">
-                           <div class="rounded-circle iq-card-icon iq-bg-primary"><i class="fas fa-clock"></i></div>
-                           <span class="float-right line-height-6">目前时间</span>
-                           <div class="clearfix"></div>
-                           <div class="text-center">
-                              <h5 class="mb-0"><div id="myClockDisplay" class="clock"></div></h5>
+                        <div class="col-md-6 col-lg-3">
+                           <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden">
+                              <div class="iq-card-body pb-0">
+                                 <div class="rounded-circle iq-card-icon iq-bg-primary"><i class="fas fa-clock"></i>
+                                 </div>
+                                 <span class="float-right line-height-6">目前时间</span>
+                                 <div class="clearfix"></div>
+                                 <div class="text-center">
+                                    <h5 class="mb-0">
+                                       <div id="myClockDisplay" class="clock"></div>
+                                    </h5>
+                                 </div>
+                              </div>
+                              </br>
                            </div>
                         </div>
-                        </br>
-                     </div>
-                  </div>
-                  <div class="col-md-6 col-lg-3">
-                     <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden">
-                        <div class="iq-card-body pb-0">
-                           <div class="rounded-circle iq-card-icon iq-bg-warning"><i class="fas fa-calendar-alt"></i></div>
-                           <span class="float-right line-height-6">今日时间</span>
-                           <div class="clearfix"></div>
-                           <div class="text-center">
-                              <h5 class="mb-0"><div id="myDateDisplay"> </div></h5>
+                        <div class="col-md-6 col-lg-3">
+                           <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden">
+                              <div class="iq-card-body pb-0">
+                                 <div class="rounded-circle iq-card-icon iq-bg-warning"><i
+                                       class="fas fa-calendar-alt"></i></div>
+                                 <span class="float-right line-height-6">今日时间</span>
+                                 <div class="clearfix"></div>
+                                 <div class="text-center">
+                                    <h5 class="mb-0">
+                                       <div id="myDateDisplay"> </div>
+                                    </h5>
+                                 </div>
+                              </div>
+                              </br>
                            </div>
                         </div>
-                        </br>
-                     </div>
-                  </div>
-                  <div class="col-md-6 col-lg-3">
-                     <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden">
-                        <div class="iq-card-body pb-0">
-                           <div class="rounded-circle iq-card-icon iq-bg-success"><i class="ri-timer-flash-fill"></i></div>
-                           <span class="float-right line-height-6">运行时间</span>
-                           <div class="clearfix"></div>
-                           <div class="text-center">
-                              <h5 class="mb-0"> [[ formatSecond(status.uptime) ]] </h5>
+                        <div class="col-md-6 col-lg-3">
+                           <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden">
+                              <div class="iq-card-body pb-0">
+                                 <div class="rounded-circle iq-card-icon iq-bg-success"><i
+                                       class="ri-timer-flash-fill"></i></div>
+                                 <span class="float-right line-height-6">运行时间</span>
+                                 <div class="clearfix"></div>
+                                 <div class="text-center">
+                                    <h5 class="mb-0"> [[ formatSecond(status.uptime) ]] </h5>
+                                 </div>
+                              </div>
+                              </br>
                            </div>
                         </div>
-                        </br>
-                     </div>
-                  </div>
-                  <div class="col-md-6 col-lg-3">
-                     <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden">
-                        <div class="iq-card-body pb-0">
-                           <div class="rounded-circle iq-card-icon iq-bg-danger"><i class="fas fa-spinner"></i></div>
-                           <span class="float-right line-height-6">系统负载</span>
-                           <div class="clearfix"></div>
-                           <div class="text-center">
-                              <h5 class="mb-0"> [[ status.loads[0] ]] | [[ status.loads[1] ]] | [[ status.loads[2] ]] </h5>
+                        <div class="col-md-6 col-lg-3">
+                           <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden">
+                              <div class="iq-card-body pb-0">
+                                 <div class="rounded-circle iq-card-icon iq-bg-danger"><i class="fas fa-spinner"></i>
+                                 </div>
+                                 <span class="float-right line-height-6">系统负载</span>
+                                 <div class="clearfix"></div>
+                                 <div class="text-center">
+                                    <h5 class="mb-0"> [[ status.loads[0] ]] | [[ status.loads[1] ]] | [[ status.loads[2]
+                                       ]] </h5>
+                                 </div>
+                              </div>
+                              </br>
                            </div>
                         </div>
-                        </br>
-                     </div>
-                  </div>
 
-	          <div class="col-md-6 col-lg-3">
-                     <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden">
-                        <div class="iq-card-body pb-0">
-                           <div class="rounded-circle iq-card-icon iq-bg-primary"><i class="ri-exchange-dollar-fill"></i></div>
-                           <span class="float-right line-height-6">TCP/UDP 链接数</span>
-                           <div class="clearfix"></div>
-                           <div class="text-center">
-                              <h5 class="mb-0"> TCP: [[ status.tcpCount ]] </br> UPD: [[ status.udpCount ]] </h5>
+                        <div class="col-md-6 col-lg-3">
+                           <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden">
+                              <div class="iq-card-body pb-0">
+                                 <div class="rounded-circle iq-card-icon iq-bg-primary"><i
+                                       class="ri-exchange-dollar-fill"></i></div>
+                                 <span class="float-right line-height-6">TCP/UDP 链接数</span>
+                                 <div class="clearfix"></div>
+                                 <div class="text-center">
+                                    <h5 class="mb-0"> TCP: [[ status.tcpCount ]] </br> UPD: [[ status.udpCount ]] </h5>
+                                 </div>
+                              </div>
+                              </br>
                            </div>
                         </div>
-                        </br>
-                     </div>
-                  </div>
-                  <div class="col-md-6 col-lg-3">
-                     <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden">
-                        <div class="iq-card-body pb-0">
-                           <div class="rounded-circle iq-card-icon iq-bg-warning"><i class="ri-bar-chart-grouped-line"></i></div>
-                           <span class="float-right line-height-6">上传/下载速率</span>
-                           <div class="clearfix"></div>
-                           <div class="text-center">
-                              <h5 class="mb-0">上传: [[ sizeFormat(status.netIO.up) ]] / S </br>下载: [[ sizeFormat(status.netIO.down) ]] / S</h5>
+                        <div class="col-md-6 col-lg-3">
+                           <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden">
+                              <div class="iq-card-body pb-0">
+                                 <div class="rounded-circle iq-card-icon iq-bg-warning"><i
+                                       class="ri-bar-chart-grouped-line"></i></div>
+                                 <span class="float-right line-height-6">上传/下载速率</span>
+                                 <div class="clearfix"></div>
+                                 <div class="text-center">
+                                    <h5 class="mb-0">上传: [[ sizeFormat(status.netIO.up) ]] / S </br>下载: [[
+                                       sizeFormat(status.netIO.down) ]] / S</h5>
+                                 </div>
+                              </div>
+                              </br>
                            </div>
                         </div>
-                        </br>
-                     </div>
-                  </div>
-                  <div class="col-md-6 col-lg-3">
-                     <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden">
-                        <div class="iq-card-body pb-0">
-                           <div class="rounded-circle iq-card-icon iq-bg-success"><i class="fas fa-repeat"></i></div>
-                           <span class="float-right line-height-6">流量统计</span>
-                           <div class="clearfix"></div>
-                           <div class="text-center">
-                              <h5 class="mb-0">上传: [[ sizeFormat(status.netTraffic.sent) ]] </br> 下载: [[ sizeFormat(status.netTraffic.recv) ]]</h5>
+                        <div class="col-md-6 col-lg-3">
+                           <div class="iq-card iq-card-block iq-card-stretch iq-card-height overflow-hidden">
+                              <div class="iq-card-body pb-0">
+                                 <div class="rounded-circle iq-card-icon iq-bg-success"><i class="fas fa-repeat"></i>
+                                 </div>
+                                 <span class="float-right line-height-6">流量统计</span>
+                                 <div class="clearfix"></div>
+                                 <div class="text-center">
+                                    <h5 class="mb-0">上传: [[ sizeFormat(status.netTraffic.sent) ]] </br> 下载: [[
+                                       sizeFormat(status.netTraffic.recv) ]]</h5>
+                                 </div>
+                              </div>
+                              </br>
                            </div>
                         </div>
-                        </br>
                      </div>
                   </div>
                </div>
             </div>
-         </div>
-      </div>
-      <a-modal id="version-modal" v-model="versionModal.visible" title="切换版本" :closable="true" @ok="() => versionModal.visible = false" ok-text="确定" cancel-text="取消">
-        <h4>点击需要切换的xray内核版本</h4>
-        <h5>请谨慎选择，如选择旧版本有可能会导致节点配置不兼容</h5>
-        <template v-for="version, index in versionModal.versions">
-          <a-tag :color="index % 2 == 0 ? 'blue' : 'green'" style="margin: 10px" @click="switchV2rayVersion(version)">
-             [[ version ]]
-          </a-tag>
-        </template>
-      </a-modal>
+            <a-modal id="version-modal" v-model="versionModal.visible" title="切换版本" :closable="true"
+               @ok="() => versionModal.visible = false" ok-text="确定" cancel-text="取消">
+               <h4>点击需要切换的xray内核版本</h4>
+               <h5>请谨慎选择，如选择旧版本有可能会导致节点配置不兼容</h5>
+               <template v-for="version, index in versionModal.versions">
+                  <a-tag :color="index % 2 == 0 ? 'blue' : 'green'" style="margin: 10px"
+                     @click="switchV2rayVersion(version)">
+                     [[ version ]]
+                  </a-tag>
+               </template>
+            </a-modal>
 
-      <!-- Wrapper END -->
-      <!-- Footer -->
-      <footer class="bg-white iq-footer">
-         <div class="container-fluid">
-            <div class="row">
-               <div class="col-lg-6">
-                  <ul class="list-inline mb-0">
-                     <li class="list-inline-item"><a href="https://github.com/blog-misaka/x-ui">GitHub</a></li>
-                  </ul>
+            <!-- Wrapper END -->
+            <!-- Footer -->
+            <footer class="bg-white iq-footer">
+               <div class="container-fluid">
+                  <div class="row">
+                     <div class="col-lg-6">
+                        <ul class="list-inline mb-0">
+                           <li class="list-inline-item"><a href="https://github.com/blog-misaka/x-ui">GitHub</a></li>
+                        </ul>
+                     </div>
+                     <div class="col-lg-6 text-right">
+                        Copyright 2022 <a href="https://github.com/blog-misaka/x-ui">X-UI</a> All Rights Reserved.
+                     </div>
+                  </div>
                </div>
-               <div class="col-lg-6 text-right">
-                  Copyright 2022 <a href="https://github.com/blog-misaka/x-ui">X-UI</a> All Rights Reserved.
-               </div>
-            </div>
-         </div>
-      </footer>
+            </footer>
 
-        </a-layout-content>
-    </a-layout>
-</a-layout>
+         </a-layout-content>
+      </a-layout>
+   </a-layout>
 
-      <!-- Footer END -->
-      <!-- Optional JavaScript -->
-      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src="{{ .base_path }}assets/js/jquery.min.js"></script>
-      <script src="{{ .base_path }}assets/js/popper.min.js"></script>
-      <script src="{{ .base_path }}assets/js/bootstrap.min.js"></script>
-      <!-- Appear JavaScript -->
-      <script src="{{ .base_path }}assets/js/jquery.appear.js"></script>
-      <!-- Countdown JavaScript -->
-      <script src="{{ .base_path }}assets/js/countdown.min.js"></script>
-      <!-- Counterup JavaScript -->
-      <script src="{{ .base_path }}assets/js/waypoints.min.js"></script>
-      <script src="{{ .base_path }}assets/js/jquery.counterup.min.js"></script>
-      <!-- Wow JavaScript -->
-      <script src="{{ .base_path }}assets/js/wow.min.js"></script>
-      <!-- Apexcharts JavaScript -->
-      <script src="{{ .base_path }}assets/js/apexcharts.js"></script>
-      <!-- Slick JavaScript -->
-      <script src="{{ .base_path }}assets/js/slick.min.js"></script>
-      <!-- Select2 JavaScript -->
-      <script src="{{ .base_path }}assets/js/select2.min.js"></script>
-      <!-- Owl Carousel JavaScript -->
-      <script src="{{ .base_path }}assets/js/owl.carousel.min.js"></script>
-      <!-- Magnific Popup JavaScript -->
-      <script src="{{ .base_path }}assets/js/jquery.magnific-popup.min.js"></script>
-      <!-- Smooth Scrollbar JavaScript -->
-      <script src="{{ .base_path }}assets/js/smooth-scrollbar.js"></script>
-      <!-- lottie JavaScript -->
-      <script src="{{ .base_path }}assets/js/lottie.js"></script>
-      <!-- Chart Custom JavaScript -->
-      <script src="{{ .base_path }}assets/js/chart-custom.js"></script>
-      <!-- Custom JavaScript -->
-      <script src="{{ .base_path }}assets/js/custom.js"></script>
+   <!-- Footer END -->
+   <!-- Optional JavaScript -->
+   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="{{ .base_path }}assets/js/jquery.min.js"></script>
+   <script src="{{ .base_path }}assets/js/popper.min.js"></script>
+   <script src="{{ .base_path }}assets/js/bootstrap.min.js"></script>
+   <!-- Appear JavaScript -->
+   <script src="{{ .base_path }}assets/js/jquery.appear.js"></script>
+   <!-- Countdown JavaScript -->
+   <script src="{{ .base_path }}assets/js/countdown.min.js"></script>
+   <!-- Counterup JavaScript -->
+   <script src="{{ .base_path }}assets/js/waypoints.min.js"></script>
+   <script src="{{ .base_path }}assets/js/jquery.counterup.min.js"></script>
+   <!-- Wow JavaScript -->
+   <script src="{{ .base_path }}assets/js/wow.min.js"></script>
+   <!-- Apexcharts JavaScript -->
+   <script src="{{ .base_path }}assets/js/apexcharts.js"></script>
+   <!-- Slick JavaScript -->
+   <script src="{{ .base_path }}assets/js/slick.min.js"></script>
+   <!-- Select2 JavaScript -->
+   <script src="{{ .base_path }}assets/js/select2.min.js"></script>
+   <!-- Owl Carousel JavaScript -->
+   <script src="{{ .base_path }}assets/js/owl.carousel.min.js"></script>
+   <!-- Magnific Popup JavaScript -->
+   <script src="{{ .base_path }}assets/js/jquery.magnific-popup.min.js"></script>
+   <!-- Smooth Scrollbar JavaScript -->
+   <script src="{{ .base_path }}assets/js/smooth-scrollbar.js"></script>
+   <!-- lottie JavaScript -->
+   <script src="{{ .base_path }}assets/js/lottie.js"></script>
+   <!-- Chart Custom JavaScript -->
+   <script src="{{ .base_path }}assets/js/chart-custom.js"></script>
+   <!-- Custom JavaScript -->
+   <script src="{{ .base_path }}assets/js/custom.js"></script>
 
-<!-- Date Time JS -->
-<script type="text/javascript">
-    function showTime() {
-        var timediv = document.getElementById("myClockDisplay");
-        var datediv = document.getElementById("myDateDisplay");
-        var dt = new Date();
-        var d = dt.getDate();
-        var m = dt.getMonth() + 1;
-        var y = dt.getFullYear();
-        var hh = dt.getHours();
-        var mm = dt.getMinutes();
-        var ss = dt.getSeconds();
+   <!-- Date Time JS -->
+   <script type="text/javascript">
+      function showTime() {
+         var timediv = document.getElementById("myClockDisplay");
+         var datediv = document.getElementById("myDateDisplay");
+         var dt = new Date();
+         var d = dt.getDate();
+         var m = dt.getMonth() + 1;
+         var y = dt.getFullYear();
+         var hh = dt.getHours();
+         var mm = dt.getMinutes();
+         var ss = dt.getSeconds();
 
-        d = (d < 10) ? "0" + d : d;
-        m = (m < 10) ? "0" + m : m;
-        hh = (hh < 10) ? "0" + hh : hh;
-        mm = (mm < 10) ? "0" + mm : mm;
-        ss = (ss < 10) ? "0" + ss : ss;
-        timediv.textContent = hh + " 点 " + mm + " 分 " + ss + " 秒 ";
-        datediv.textContent = y + " 年 " + m + " 月 " + d + " 日 ";
-        setTimeout(showTime, 1000);
-     }
-</script>
+         d = (d < 10) ? "0" + d : d;
+         m = (m < 10) ? "0" + m : m;
+         hh = (hh < 10) ? "0" + hh : hh;
+         mm = (mm < 10) ? "0" + mm : mm;
+         ss = (ss < 10) ? "0" + ss : ss;
+         timediv.textContent = hh + " 点 " + mm + " 分 " + ss + " 秒 ";
+         datediv.textContent = y + " 年 " + m + " 月 " + d + " 日 ";
+         setTimeout(showTime, 1000);
+      }
+   </script>
 
-<script type="text/javascript">
-	document.getElementById("CPUInfo").value = Math.trunc(status.cpu.percent);
-        document.getElementById("RAMInfo").value = Math.trunc("status.mem.percent");
+   <script type="text/javascript">
+      document.getElementById("CPUInfo").value = Math.trunc(status.cpu.percent);
+      document.getElementById("RAMInfo").value = Math.trunc("status.mem.percent");
 
-	document.getElementById("CPUInfo").style.width = Math.trunc(status.cpu.percent) + "%";
-	document.getElementById("RAMInfo").style.width = Math.trunc("status.mem.percent") + "%";
+      document.getElementById("CPUInfo").style.width = Math.trunc(status.cpu.percent) + "%";
+      document.getElementById("RAMInfo").style.width = Math.trunc("status.mem.percent") + "%";
 
-	alert(Math.trunc(status.cpu.percent) + "%");
+      alert(Math.trunc(status.cpu.percent) + "%");
 
-</script>
+   </script>
 
 
-{{template "js" .}}
-<script>
-    const State = {
-        Running: "运行中",
-        Stop: "已停止",
-        Error: "错误",
-    }
-    Object.freeze(State);
+   {{template "js" .}}
+   <script>
+      const State = {
+         Running: "运行中",
+         Stop: "已停止",
+         Error: "错误",
+      }
+      Object.freeze(State);
 
-    class CurTotal {
+      class CurTotal {
 
-        constructor(current, total) {
+         constructor(current, total) {
             this.current = current;
             this.total = total;
-        }
+         }
 
-        get percent() {
+         get percent() {
             if (this.total === 0) {
-                return 0;
+               return 0;
             }
             return toFixed(this.current / this.total * 100, 2);
-        }
+         }
 
-        get color() {
+         get color() {
             const percent = this.percent;
             if (percent < 80) {
-                return '#67C23A';
+               return '#67C23A';
             } else if (percent < 90) {
-                return '#E6A23C';
+               return '#E6A23C';
             } else {
-                return '#F56C6C';
+               return '#F56C6C';
             }
-        }
-    }
+         }
+      }
 
-    class Status {
-        constructor(data) {
+      class Status {
+         constructor(data) {
             this.cpu = new CurTotal(0, 0);
             this.disk = new CurTotal(0, 0);
             this.loads = [0, 0, 0];
             this.mem = new CurTotal(0, 0);
-            this.netIO = {up: 0, down: 0};
-            this.netTraffic = {sent: 0, recv: 0};
+            this.netIO = { up: 0, down: 0 };
+            this.netTraffic = { sent: 0, recv: 0 };
             this.swap = new CurTotal(0, 0);
             this.tcpCount = 0;
             this.udpCount = 0;
             this.uptime = 0;
-            this.xray = {state: State.Stop, errorMsg: "", version: "", color: ""};
+            this.xray = { state: State.Stop, errorMsg: "", version: "", color: "" };
 
             if (data == null) {
-                return;
+               return;
             }
             this.cpu = new CurTotal(data.cpu, 100);
             this.disk = new CurTotal(data.disk.current, data.disk.total);
@@ -445,92 +481,93 @@
             this.uptime = data.uptime;
             this.xray = data.xray;
             switch (this.xray.state) {
-                case State.Running:
-                    this.xray.color = "green";
-                    break;
-                case State.Stop:
-                    this.xray.color = "orange";
-                    break;
-                case State.Error:
-                    this.xray.color = "red";
-                    break;
-                default:
-                    this.xray.color = "gray";
+               case State.Running:
+                  this.xray.color = "green";
+                  break;
+               case State.Stop:
+                  this.xray.color = "orange";
+                  break;
+               case State.Error:
+                  this.xray.color = "red";
+                  break;
+               default:
+                  this.xray.color = "gray";
             }
-        }
-    }
+         }
+      }
 
-    const versionModal = {
-        visible: false,
-        versions: [],
-        show(versions) {
+      const versionModal = {
+         visible: false,
+         versions: [],
+         show(versions) {
             this.visible = true;
             this.versions = versions;
-        },
-        hide() {
+         },
+         hide() {
             this.visible = false;
-        },
-    };
+         },
+      };
 
-    const app = new Vue({
-        delimiters: ['[[', ']]'],
-        el: '#app',
-        data: {
+      const app = new Vue({
+         delimiters: ['[[', ']]'],
+         el: '#app',
+         data: {
             siderDrawer,
             status: new Status(),
             versionModal,
             spinning: false,
             loadingTip: '加载中',
-        },
-        methods: {
+         },
+         methods: {
             loading(spinning, tip = '加载中') {
-                this.spinning = spinning;
-                this.loadingTip = tip;
+               this.spinning = spinning;
+               this.loadingTip = tip;
             },
             async getStatus() {
-                const msg = await HttpUtil.post('/server/status');
-                if (msg.success) {
-                    this.setStatus(msg.obj);
-                }
+               const msg = await HttpUtil.post('/server/status');
+               if (msg.success) {
+                  this.setStatus(msg.obj);
+               }
             },
             setStatus(data) {
-                this.status = new Status(data);
+               this.status = new Status(data);
             },
             async openSelectV2rayVersion() {
-                this.loading(true);
-                const msg = await HttpUtil.post('server/getXrayVersion');
-                this.loading(false);
-                if (!msg.success) {
-                    return;
-                }
-                versionModal.show(msg.obj);
+               this.loading(true);
+               const msg = await HttpUtil.post('server/getXrayVersion');
+               this.loading(false);
+               if (!msg.success) {
+                  return;
+               }
+               versionModal.show(msg.obj);
             },
             switchV2rayVersion(version) {
-                this.$confirm({
-                    title: '切换 xray 版本',
-                    content: '是否切换 xray 版本至' + ` ${version}?`,
-                    okText: '确定',
-                    cancelText: '取消',
-                    onOk: async () => {
-                        versionModal.hide();
-                        this.loading(true, '安装中，请不要刷新此页面');
-                        await HttpUtil.post(`/server/installXray/${version}`);
-                        this.loading(false);
-                    },
-                });
+               this.$confirm({
+                  title: '切换 xray 版本',
+                  content: '是否切换 xray 版本至' + ` ${version}?`,
+                  okText: '确定',
+                  cancelText: '取消',
+                  onOk: async () => {
+                     versionModal.hide();
+                     this.loading(true, '安装中，请不要刷新此页面');
+                     await HttpUtil.post(`/server/installXray/${version}`);
+                     this.loading(false);
+                  },
+               });
             },
-        },
-        async mounted() {
+         },
+         async mounted() {
             while (true) {
-                try {
-                    await this.getStatus();
-                } catch (e) {
-                    console.error(e);
-                }
-                await PromiseUtil.sleep(2000);
+               try {
+                  await this.getStatus();
+               } catch (e) {
+                  console.error(e);
+               }
+               await PromiseUtil.sleep(2000);
             }
-        },
-    });
-</script>
+         },
+      });
+   </script>
 </body>
+
 </html>
