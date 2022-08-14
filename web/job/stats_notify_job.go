@@ -91,14 +91,6 @@ func (j *StatsNotifyJob) SSHStatusLoginNotify(xuiStartTime string) {
 			fmt.Println("getLoginTime error: ", error.Error())
 			return
 		}
-		/*
-			//TODO:time compare if x-ui get restart and there exist logging users
-			XUIRunTime, error := exec.Command("bash", "-c", " systemctl status x-ui | grep Active| tail -n 1 | awk '{print $6,$7}' ").Output()
-			if error != nil {
-				fmt.Println("getXUIRunTime error:", error.Error())
-				return
-			}
-		*/
 		var SSHLoginTimeStr string
 		SSHLoginTimeStr = common.ByteToString(SSHLoginTime)
 		t1, err := time.Parse("2006-01-02 15:04:05", SSHLoginTimeStr)
