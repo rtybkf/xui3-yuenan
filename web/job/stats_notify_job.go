@@ -111,12 +111,12 @@ func (j *StatsNotifyJob) SSHStatusLoginNotify(xuiStartTime string) {
 			return
 		}
 
-		SSHLoginInfo = fmt.Sprintf("新用户登录提醒:\r\n")
+		SSHLoginInfo = fmt.Sprintf("SSH用户登录提醒:\r\n")
 		SSHLoginInfo += fmt.Sprintf("主机名称: %s\r\n", name)
-		SSHLoginInfo += fmt.Sprintf("SSH登录用户: %s", SSHLoginUserName)
-		SSHLoginInfo += fmt.Sprintf("SSH登录时间: %s", SSHLoginTime)
-		SSHLoginInfo += fmt.Sprintf("SSH登录IP: %s", SSHLoginIpAddr)
-		SSHLoginInfo += fmt.Sprintf("当前SSH登录用户数: %s", getSSHUserNumber)
+		SSHLoginInfo += fmt.Sprintf("登录用户: %s", SSHLoginUserName)
+		SSHLoginInfo += fmt.Sprintf("登录时间: %s", SSHLoginTime)
+		SSHLoginInfo += fmt.Sprintf("登录IP: %s", SSHLoginIpAddr)
+		SSHLoginInfo += fmt.Sprintf("当前登录用户数: %s", getSSHUserNumber)
 		j.telegramService.SendMsgToTgbot(SSHLoginInfo)
 	} else {
 		SSHLoginUser = numberInt
