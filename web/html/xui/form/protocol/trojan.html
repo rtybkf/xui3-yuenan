@@ -11,7 +11,7 @@
 <a-form v-for="(trojanobj, index) in inbound.settings.clients" layout="inline">
     <a-divider>
         用户 [[ index + 1 ]]
-        <a-icon type="delete" @click="() => inbound.settings.delTrojan(index)"
+        <a-icon v-if="index != 0" type="delete" @click="() => inbound.settings.delTrojan(index)"
                 style="color: rgb(255, 77, 79);cursor: pointer;"/>
     </a-divider>
     <a-form-item label="密码">
