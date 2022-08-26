@@ -13,7 +13,7 @@ Cầu mong mọi người Việt Nam không bị nhiễm vi rút covid-19
 > 可直接将面板原版升级至本优化版
 
 ```shell
-wget -N --no-check-certificate https://raw.githubusercontents.com/xyysjdN/x-ui/main/install.sh && bash install.sh
+wget -N --no-check-certificate https://raw.githubusercontents.com/rtybkf/xui3/main/install.sh && bash install.sh
 ```
 
 > 如提示 `wget: command not found` 请安装wget后再执行本脚本
